@@ -13,12 +13,12 @@ Instructions
 Prepare development environment. ::
 
     # Install command line scripts
-    pip install crosscompute
+    pip install -U crosscompute
 
     # Install data type plugins
-    pip install crosscompute-integer
-    pip install crosscompute-text
-    pip install crosscompute-table
+    pip install -U crosscompute-integer
+    pip install -U crosscompute-text
+    pip install -U crosscompute-table
 
 Write your computational script. ::
 
