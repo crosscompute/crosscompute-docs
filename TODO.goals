@@ -1,2 +1,29 @@
-Document xyz.help
-Document xyz.value
++ Restart project with new sphinx template
+= Use different programming languages and operating systems
+
+Install core package
+    Use virtual environment
+Install plugins
+
+Write quick start example
+Cover run
+Cover serve
+
+Define parameters using data type plugins in command_template
+Define default values for arguments
+Capture standard streams
+Save output files in target_folder
+
+Specify data types for arguments using suffixes
+    Render input
+    Render output files by printing properties to standard output
+    Print errors to standard error
+
+Specify dependencies
+Specify help popovers for arguments and properties
+
+Discuss configuration options when serving multiple apps
+
+Document image plugin
+Document table plugin
+Document geotable plugin
