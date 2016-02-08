@@ -1,11 +1,16 @@
-+ Restart project with new sphinx template
-= Use different programming languages and operating systems
-
 Install core package
     Use virtual environment
 Install plugins
 
-Write quick start example
++ Restart documentation with new Sphinx template
++ Read Write the Docs
++ Read Sphinx documentation
++ Describe purpose
++ Write quick start example
++ Use different programming languages and operating systems
++ Add 'show_related': True to html_theme_options for alabaster theme
+_ Add link to http://docs.python-guide.org/en/latest/index.html
+
 Cover run
 Cover serve
 
@@ -27,3 +32,9 @@ Discuss configuration options when serving multiple apps
 Document image plugin
 Document table plugin
 Document geotable plugin
+
+Compare against old documentation
+
+Publish on read the docs
+Set up stack overflow filters
+Set up google alerts
