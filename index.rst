@@ -34,6 +34,7 @@ References
    :maxdepth: 2
 
    installation-instructions
+   usage-instructions
    common-questions
    selected-recipes
    feature-requests
