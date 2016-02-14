@@ -35,7 +35,18 @@ References
 
    installation-instructions
    selected-recipes-in-python
-   feature-requests
+
+
+Feature requests
+----------------
+If you found a bug or want a feature, you can request to have it fixed or implemented.
+
+- `Issues with documentation <https://github.com/crosscompute/crosscompute-docs/issues>`_
+- `Issues with examples <https://github.com/crosscompute/crosscompute-examples/issues>`_
+- `Issues with application development framework <https://github.com/crosscompute/crosscompute/issues>`_
+- `Issues with data type plugins <https://github.com/crosscompute/crosscompute-types/issues>`_
+
+For other requests, you can reach us at support@crosscompute.com.
 
 
 License
