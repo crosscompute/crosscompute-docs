@@ -9,7 +9,7 @@ Capture standard streams
 ------------------------
 In the simplest case, you have a command-line script and you want to capture its standard output.  Here is an example of such a script.
 
-.. literalinclude:: recipes/python/divide-floats/run.py
+.. literalinclude:: examples/python/divide-floats/run.py
    :language: python
 
 Running the script produces the following output.  ::
@@ -19,7 +19,7 @@ Running the script produces the following output.  ::
 
 To wrap the script in a web interface, we write a configuration file.
 
-.. literalinclude:: recipes/python/divide-floats/cc.ini
+.. literalinclude:: examples/python/divide-floats/cc.ini
    :language: ini
 
 
@@ -40,7 +40,7 @@ The most important option in the configuration file is the ``command_template``,
 
 Here, we use ``python`` to execute ``run.py`` with ``x`` and ``y`` as arguments.
 
-.. literalinclude:: recipes/python/divide-floats/cc.ini
+.. literalinclude:: examples/python/divide-floats/cc.ini
    :language: ini
    :lines: 2
 
@@ -58,7 +58,7 @@ Capture standard streams
 ````````````````````````
 CrossCompute parses but does not save standard output or standard error from the script, unless requested to do so explicitly.
 
-.. literalinclude:: recipes/python/divide-floats/cc.ini
+.. literalinclude:: examples/python/divide-floats/cc.ini
    :language: ini
    :lines: 3-4
 
@@ -67,11 +67,18 @@ Specify default values for arguments
 ````````````````````````````````````
 When executed without arguments, ``crosscompute run`` uses the default values specified in the configuration file, which can save time during development.
 
-.. literalinclude:: recipes/python/divide-floats/cc.ini
+.. literalinclude:: examples/python/divide-floats/cc.ini
    :language: ini
    :lines: 5-6
 
-Additionally, ``crosscompute serve`` uses the default values to populate the tool form.
+Additionally, ``crosscompute serve`` uses the default values to populate the tool form.  If an argument name ends with ``_path`` and a default file path is specified, the web app will show the contents of the file in the form.  For example, this configuration file
+
+.. literalinclude:: examples/python/get-size/cc.ini
+   :language: ini
+
+will render the following form.
+
+.. image:: _static/get-size-tool.png
 
 
 Run tool
