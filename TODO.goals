@@ -1,39 +1,4 @@
-Cover run
-Cover serve
-
-Define command_template
-Define default values for arguments
-Capture standard streams
-Save output files in target_folder
-
-Specify data types for arguments using suffixes
-    Render input
-    Render output files by printing properties to standard output
-    Print errors to standard error
-
-+ Restart documentation with new Sphinx template
-+ Read Write the Docs
-+ Read Sphinx documentation
-+ Describe purpose
-+ Write quick start example
-+ Use different programming languages and operating systems
-+ Add 'show_related': True to html_theme_options for alabaster theme
-+ Use virtual environment
-+ Install core package
-+ Install plugins
-_ Add link to http://docs.python-guide.org/en/latest/index.html
-
-Specify dependencies
-Specify help popovers for arguments and properties
-
-Discuss configuration options when serving multiple apps
-
-Document image plugin
-Document table plugin
-Document geotable plugin
-
 Compare against old documentation
-
 Publish on read the docs
 Set up stack overflow filters
 Set up google alerts

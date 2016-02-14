@@ -34,9 +34,7 @@ References
    :maxdepth: 2
 
    installation-instructions
-   usage-instructions
-   common-questions
-   selected-recipes
+   selected-recipes-in-python
    feature-requests
 
 
