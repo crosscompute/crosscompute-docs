@@ -1,33 +1,40 @@
 Write example script for saving output files
-    Given text, analyze words and letters
+    count-characters
 Write example script for input argument data types
-    integer
-    text
-    table
+    load-inputs
+        integer
+        text
+        table
 Write example script for output parameter data types
-    integer
-    text
-    table
-    image
-    geotable
+    save-outputs
+        integer
+        text
+        table
+        image
+        geotable
 Write example script for error logging
-    modify divide floats with error logging
+    divide-integers
+        add error logging
 Write example script for dependencies
-    dateutil
+    get-locations
+        geopy
 Write example script for help popovers
-    divide floats
+    show-popovers
 Write example for multiple apps
-    divide floats
-    multiply integers
+    add-integers
+    subtract-integers
 Write example for images
-    generate basic scatter plot
+    show-plot
+        generate basic scatter plot
 Write example for tables
-    generate basic table
+    show-table
+        generate basic table
 Write example for maps
-    pixel radius
-    meter radius
-    fill color
-    fill reds
+    show-maps
+        pixel radius
+        meter radius
+        fill color
+        fill reds
 
 Compare against old documentation
 Publish on read the docs
