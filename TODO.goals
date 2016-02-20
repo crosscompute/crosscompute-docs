@@ -1,7 +1,5 @@
-Write example script for saving output files
-    count-characters
-Write example script for input argument data types
-    load-inputs
+= Write example script for input argument data types
+    = load-inputs
         integer
         text
         table
@@ -21,8 +19,9 @@ Write example script for dependencies
 Write example script for help popovers
     show-popovers
 Write example for multiple apps
-    add-integers
-    subtract-integers
+    configure-tools
+        add-integers
+        subtract-integers
 Write example for images
     show-plot
         generate basic scatter plot
@@ -35,7 +34,7 @@ Write example for maps
         meter radius
         fill color
         fill reds
-
+Add note about pcreate -s tool
 Compare against old documentation
 Publish on read the docs
 Set up stack overflow filters

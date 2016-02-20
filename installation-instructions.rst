@@ -1,3 +1,5 @@
+.. _installation_instructions:
+
 Installation instructions
 =========================
 To separate CrossCompute packages from system packages, we recommend using virtualenv_ to prepare an isolated environment.

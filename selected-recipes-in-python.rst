@@ -34,6 +34,8 @@ The configuration file must end with the extension ``.ini`` and contain a sectio
 If you do not specify a tool name, then the name of the tool will be the name of the folder containing the configuration file.
 
 
+.. _specify_command_line_arguments:
+
 Specify command-line arguments
 ``````````````````````````````
 The most important option in the configuration file is the ``command_template``, which tells CrossCompute how to run your script.
@@ -112,8 +114,7 @@ Then execute ``crosscompute run`` in the parent folder or same folder as your co
 The ``target_folder`` contains the result generated from this run.  Each subsequent run will save the result in a new ``target_folder``.  ::
 
     $ ls /tmp/divide-floats/results/1
-    result.cfg
-    standard_output.log
+    result.cfg  standard_output.log
 
 If there is more than one tool, you will need to specify the tool name explicitly.  ::
 
@@ -176,20 +177,90 @@ Click **Run** to see the result.
 
 Save output files
 -----------------
-.. todo:: Show example script
-.. todo:: Show configuration file
-.. todo:: Save output files in target_folder
+The ``target_folder`` argument is a special keyword that specifies the folder where your script can save files for the user to download.
+
+.. literalinclude:: examples/python/save-text/cc.ini
+   :language: ini
+
+If your script saves files in the folder, then the user will have access to those files by downloading the archive on the result page.
+
+.. literalinclude:: examples/python/save-text/run.py
+   :language: python
+
+Run the script by typing ``crosscompute run`` in the same folder as ``cc.ini``.  ::
+
+    $ crosscompute run
+    [tool_definition]
+    tool_name = save-text
+    configuration_path = ~/Experiments/save-text/cc.ini
+    command = python run.py /tmp/save-text/results/1
+
+    [result_arguments]
+    target_folder = /tmp/save-text/results/1
+
+    [result_properties]
+    execution_time_in_seconds = 0.0495231151581
+
+    $ ls /tmp/save-text/results/1
+    result.cfg  xyz.txt
+
+Serve the script by typing ``crosscompute serve`` in the same folder as ``cc.ini``.  ::
+
+    $ crosscompute serve
+
+Run the tool, then click ``Download`` to receive an archive containing the result configuration as well as any files saved in the ``target_folder``.
+
+.. image:: _static/save-text-result.png
+
+Additionally, the tool will be able to render the content of those files for selected data types (see :ref:`specify_data_types_for_result_properties`).  Here is a slightly more involved example that counts the number of each non-whitespace character in a text file.
+
+.. literalinclude:: examples/python/count-characters/cc.ini
+   :language: ini
+
+The script tells CrossCompute to render the output file as a table by printing a statement in the form ``xyz_table_path = abc.csv``.
+
+.. literalinclude:: examples/python/count-characters/run.py
+   :language: python
+
+Running the tool using ``crosscompute serve`` renders the desired table.
+
+.. image:: _static/count-characters-result.png
 
 
-Specify data types for input arguments
---------------------------------------
-.. todo:: Show example script
-.. todo:: Show configuration file
-.. todo:: Specify data types for input arguments using suffixes
+Specify data types for tool arguments
+-------------------------------------
+Specifying the data type of a tool argument provides the following benefits.
+
+- The script can assume that an argument matches its specified data type.  For example, the script below can assume that its first argument is an integer because the framework performs basic integer validation before running the script.
+- The corresponding web application renders an appropriate query for the argument in the form.
+
+.. image:: _static/load-inputs-tool.png
+
+The suffix of a tool argument determines its data type.  Specify tool arguments in the ``command_template`` by enclosing argument names in curly brackets (see :ref:`specify_command_line_arguments`).  In the configuration file below, the arguments are ``some_count`` (integer), ``a_text_path`` (text), ``a_table_path`` (table).
+
+.. literalinclude:: examples/python/load-inputs/cc.ini
+   :language: ini
+
+Only the configuration file ``command_template`` is relevant when determining tool argument data types.  The script does not have to use the same argument names.
+
+.. literalinclude:: examples/python/load-inputs/run.py
+   :language: python
+
+Install the relevant data type plugins.  CrossCompute matches argument name endings to suffixes registered by installed data types.  ::
+
+    pip install -U crosscompute-integer
+    pip install -U crosscompute-text
+    pip install -U crosscompute-table
+
+You can also register your own data type plugins.  For examples on how to write data type plugins, please see https://github.com/crosscompute/crosscompute-types.
 
 
-Specify data types for output properties
+.. _specify_data_types_for_result_properties:
+
+Specify data types for result properties
 ----------------------------------------
+Similarly, specifying the data type of a result property provides the following benefits.
+
 .. todo:: Show example script
 .. todo:: Show configuration file
 .. todo:: Print properties to standard output
