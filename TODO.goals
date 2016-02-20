@@ -1,15 +1,3 @@
-= Write example script for input argument data types
-    = load-inputs
-        integer
-        text
-        table
-Write example script for output parameter data types
-    save-outputs
-        integer
-        text
-        table
-        image
-        geotable
 Write example script for error logging
     divide-integers
         add error logging

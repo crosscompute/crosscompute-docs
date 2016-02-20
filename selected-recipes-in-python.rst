@@ -2,8 +2,8 @@ Selected recipes in Python
 ==========================
 Although we have used Python for our examples, you can easily adapt these recipes to command-line scripts written in other programming languages.
 
-.. todo:: Write examples using other programming languages.
 
+.. _capture_standard_streams:
 
 Capture standard streams
 ------------------------
@@ -175,6 +175,8 @@ Click **Run** to see the result.
 .. image:: _static/divide-floats-result.png
 
 
+.. _save_output_files:
+
 Save output files
 -----------------
 The ``target_folder`` argument is a special keyword that specifies the folder where your script can save files for the user to download.
@@ -232,7 +234,7 @@ Specify data types for tool arguments
 Specifying the data type of a tool argument provides the following benefits.
 
 - The script can assume that an argument matches its specified data type.  For example, the script below can assume that its first argument is an integer because the framework performs basic integer validation before running the script.
-- The corresponding web application renders an appropriate query for the argument in the form.
+- The corresponding web application renders an appropriate query for the tool argument in the form.
 
 .. image:: _static/load-inputs-tool.png
 
@@ -259,18 +261,57 @@ You can also register your own data type plugins.  For examples on how to write 
 
 Specify data types for result properties
 ----------------------------------------
-Similarly, specifying the data type of a result property provides the following benefits.
+Specifying the data type of a result property provides the following benefits.
 
-.. todo:: Show example script
-.. todo:: Show configuration file
-.. todo:: Print properties to standard output
-.. todo:: Specify data types for output properties using suffixes
+- The corresponding web application renders an appropriate value for the result property in the form.
+
+First, include a ``target_folder`` in the ``command_template``.
+
+.. literalinclude:: examples/python/save-outputs/cc.ini
+   :language: ini
+
+Then, save output files in the ``target_folder`` (see :ref:`save_output_files`) and print statements to standard output in the form ``abc_suffix = xyz`` where the suffix corresponds to the desired data type.
+
+.. literalinclude:: examples/python/save-outputs/run.py
+   :language: python
+   :emphasize-lines: 11,19,25,35
+
+The example above contains the following print statements::
+
+    print('an_integer = ...')       # Render integer
+    print('a_table_path = ...')     # Render table
+    print('an_image_path = ...')    # Render image
+    print('a_geotable_path = ...')  # Render geoimage (map)
+
+Serve and run the tool to render the result.  ::
+
+    $ crosscompute serve
+
+.. image:: _static/save-outputs-table.png
+.. image:: _static/save-outputs-image.png
+.. image:: _static/save-outputs-geotable.png
 
 
-Log errors
-----------
-.. todo:: Show example script
-.. todo:: Show configuration file
+Log errors and warnings
+-----------------------
+There are two ways that you can communicate an error or warning to the user:
+
+- Option 1: Set ``show_standard_error = True`` in the configuration file (see :ref:`capture_standard_streams`).  The advantage is that this does not require changes in the script.  The disadvantage is that you might show proprietary or unnecessary information.
+- Option 2: Write to standard error in the format ``abc = xyz``.  The advantage is that this provides finer control of the information that you share with the user.  The disadvantage is that you will have to make sure that your messages are in the format ``abc = xyz``.  Note that the spaces around the equal sign are important.
+
+.. literalinclude:: examples/python/divide-integers/cc.ini
+   :language: ini
+
+.. literalinclude:: examples/python/divide-integers/run.py
+   :language: python
+   :emphasize-lines: 8
+
+.. image:: _static/divide-integers-error.png
+
+In Python, you can use the ``exit`` system function for errors (which will set a non-zero return code) and use the ``print_error`` convenience function (which simply prints to standard error) for warnings.  ::
+
+    from invisibleroads_macros.log import print_error
+    print_error('xyz.warning = cave canem')
 
 
 Specify dependencies
