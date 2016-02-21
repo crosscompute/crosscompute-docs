@@ -1,6 +1,3 @@
-Write example script for error logging
-    divide-integers
-        add error logging
 Write example script for dependencies
     get-locations
         geopy
