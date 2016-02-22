@@ -316,13 +316,31 @@ In Python, you can use the ``exit`` system function for errors (which will set a
 
 Specify dependencies
 --------------------
-.. todo:: Show example script
-.. todo:: Show configuration file
+You can put dependencies in the configuration file.  Currently, the framework supports dependencies for the following languages:
+
+- Python
+
+.. literalinclude:: examples/python/get-locations/cc.ini
+   :language: ini
+   :emphasize-lines: 6-7
 
 
 Specify help popovers
 ---------------------
-.. todo:: Specify help popovers for arguments and properties
+A help popover is a helpful description that appears when the user touches a question mark icon.  To add a help popover to a tool argument or result property, use the following syntax in the configuration file::
+
+    your_argument_name.help = helpful description
+    your_result_property.help = another description
+
+Here is an example configuration file.
+
+.. literalinclude:: examples/python/show-popovers/cc.ini
+   :language: ini
+   :emphasize-lines: 4-5
+
+And here is the resulting interface.
+
+.. image:: _static/show-popovers-result.png
 
 
 Serve multiple apps

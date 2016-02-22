@@ -1,8 +1,3 @@
-Write example script for dependencies
-    get-locations
-        geopy
-Write example script for help popovers
-    show-popovers
 Write example for multiple apps
     configure-tools
         add-integers
