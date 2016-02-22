@@ -343,8 +343,8 @@ And here is the resulting interface.
 .. image:: _static/show-popovers-result.png
 
 
-Serve multiple apps
--------------------
+Serve multiple tools
+--------------------
 .. todo:: Discuss configuration options when serving multiple apps
 
 
