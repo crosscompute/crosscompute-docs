@@ -345,7 +345,22 @@ And here is the resulting interface.
 
 Serve multiple tools
 --------------------
-.. todo:: Discuss configuration options when serving multiple apps
+There are two ways to organize your files when serving multiple tools:
+
+- Option 1: Have multiple configuration files in separate folders and launch ``crosscompute serve`` from the parent folder.  ::
+
+    .
+    ├── count-characters
+    │   ├── cc.ini
+    │   └── run.py
+    └── divide-floats
+        ├── cc.ini
+        └── run.py
+
+- Option 2: Have a single configuration file with multiple sections.
+
+.. literalinclude:: examples/python/configure-tools/cc.ini
+   :language: ini
 
 
 Show images
