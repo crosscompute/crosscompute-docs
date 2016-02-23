@@ -1,21 +1,31 @@
-Write example for multiple tools
-    configure-tools
-        add-integers
-        subtract-integers
-Write example for images
-    show-plot
-        generate basic scatter plot
-Write example for tables
-    show-table
-        generate basic table
-Write example for maps
-    show-maps
-        pixel radius
-        meter radius
-        fill color
-        fill reds
-Add note about pcreate -s tool
+= Write example for maps
+    + show-map
+        + accept hyphens or underscores in table name
+        + use special table name
+        + multiple points at same location
+        + radius in pixels range from mean
+        + fill blues from sum
+    = show-example-maps
+        simple points _latitude _longitude
+            multiple entries at same location
+        simple wkts _wkt
+        table name and column names
+            (streets|light|dark|satellite|streets-satellite|wheatpaste|streets-basic|comic|outdoors|run-bike-hike|pencil|pirates|emerald|high-contrast)_geotable/.exec(key)[1];
+        radius
+            pixel radius
+            meter radius
+        fill color or scheme from brewer
+            hex
+            name
+            grey
+            matplotlib documentation link
+        from count mean sum
+            radius
+            color
+        table formats msg json csv
+        MAPBOX_TOKEN
 Compare against old documentation
 Publish on read the docs
 Set up stack overflow filters
 Set up google alerts
+Comment about static output files

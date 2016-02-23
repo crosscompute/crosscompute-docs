@@ -3,6 +3,34 @@ Selected recipes in Python
 Although we have used Python for our examples, you can easily adapt these recipes to command-line scripts written in other programming languages.
 
 
+Start from scaffold
+-------------------
+To save time, you can start building your tool from a predefined scaffold, `courtesy of Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html>`_.  ::
+
+    $ pcreate -l
+    Available scaffolds:
+    alchemy:                 Pyramid SQLAlchemy project using url dispatch
+    posts:                   InvisibleRoads Posts
+    pyramid_jinja2_starter:  pyramid jinja2 starter project
+    starter:                 Pyramid starter project
+    tool:                    CrossCompute Tool
+    zodb:                    Pyramid ZODB project using traversal
+
+The ``tool`` scaffold will clone the basic tool scaffold.  ::
+
+    $ pcreate -s tool your-tool-name
+
+Here is the basic tool scaffold configuration file.
+
+.. literalinclude:: examples/python/start-tool/cc.ini
+   :language: ini
+
+Here is the basic tool scaffold script.
+
+.. literalinclude:: examples/python/start-tool/run.py
+   :language: python
+
+
 .. _capture_standard_streams:
 
 Capture standard streams
@@ -363,23 +391,79 @@ There are two ways to organize your files when serving multiple tools:
    :language: ini
 
 
-Show images
------------
-.. todo:: Verify installation
-.. todo:: Show example script
-.. todo:: Show configuration file
-
-
 Show tables
 -----------
-.. todo:: Verify installation
-.. todo:: Show example script
-.. todo:: Show configuration file
+First, make sure you have installed the appropriate data type plugin.  ::
+
+    pip install -U crosscompute-table
+
+Then, save the table in ``target_folder``.  ::
+
+    from os.path import join
+    target_path = join(target_folder, 'points.csv')
+    csv_writer = csv.writer(open(target_path, 'w'))
+    csv_writer.writerow(['x', 'y'])
+    csv_writer.writerow([100, 100])
+
+Finally, print the table path to standard output, making sure to specify the data type suffix.  ::
+
+    print('point_table_path = ' + target_path)
+
+Here is the example configuration file.
+
+.. literalinclude:: examples/python/make-points/cc.ini
+   :language: ini
+
+Here is the example script.
+
+.. literalinclude:: examples/python/make-points/run.py
+   :language: python
+
+.. image:: _static/make-points-result.png
+
+
+Show images
+-----------
+First, make sure you have installed the appropriate data type plugin.  ::
+
+    pip install -U crosscompute-image
+
+Then, save the image in ``target_folder``.  If you are using ``matplotlib`` to generate the image, then ensure that the script will run without a display by specifying the ``Agg`` backend.  ::
+
+    import matplotlib
+    matplotlib.use('Agg')
+
+    from matplotlib import pyplot as plt
+    from os.path import join
+
+    target_path = join(target_folder, 'points.png')
+    figure = plt.figure()
+    # Generate your plot here
+    figure.savefig(target_path)
+
+Finally, print the image path to standard output, making sure to specify the data type suffix.  ::
+
+    print('point_image_path = ' + target_path)
+
+Here is the example configuration file.
+
+.. literalinclude:: examples/python/show-plot/cc.ini
+   :language: ini
+
+Here is the example script.
+
+.. literalinclude:: examples/python/show-plot/run.py
+   :language: python
+
+.. image:: _static/show-plot-result.png
 
 
 Show maps
 ---------
-.. todo:: Verify installation
+First, make sure you have installed the appropriate data type plugin.  ::
+
+    pip install -U crosscompute-geotable
+
 .. todo:: Show example script
 .. todo:: Show configuration file
 .. todo:: Show how various column names render different styles
