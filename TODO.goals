@@ -14,14 +14,14 @@
         radius
             pixel radius
             meter radius
+            range
+            from mean sum
         fill color or scheme from brewer
             hex
             name
             grey
             matplotlib documentation link
-        from count mean sum
-            radius
-            color
+            from mean sum
         table formats msg json csv
         MAPBOX_TOKEN
 Compare against old documentation
