@@ -17,9 +17,12 @@
             range
             from mean sum
         fill color or scheme from brewer
-            hex
-            name
-            grey
+
+# single letter
+# 0-1 grey shades
+# hex string
+# rgb tuple
+# html names
             matplotlib documentation link
             from mean sum
         table formats msg json csv
