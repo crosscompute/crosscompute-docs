@@ -1,34 +1,6 @@
-= Write example for maps
-    + show-map
-        + accept hyphens or underscores in table name
-        + use special table name
-        + multiple points at same location
-        + radius in pixels range from mean
-        + fill blues from sum
-    = show-example-maps
-        simple points _latitude _longitude
-            multiple entries at same location
-        simple wkts _wkt
-        table name and column names
-            (streets|light|dark|satellite|streets-satellite|wheatpaste|streets-basic|comic|outdoors|run-bike-hike|pencil|pirates|emerald|high-contrast)_geotable/.exec(key)[1];
-        radius
-            pixel radius
-            meter radius
-            range
-            from mean sum
-        fill color or scheme from brewer
-
-# single letter
-# 0-1 grey shades
-# hex string
-# rgb tuple
-# html names
-            matplotlib documentation link
-            from mean sum
-        table formats msg json csv
-        MAPBOX_TOKEN
+Mention table formats msg json csv
+Mention MAPBOX_TOKEN
 Compare against old documentation
 Publish on read the docs
 Set up stack overflow filters
 Set up google alerts
-Comment about static output files

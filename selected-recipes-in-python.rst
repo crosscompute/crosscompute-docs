@@ -409,15 +409,20 @@ Finally, print the table path to standard output, making sure to specify the dat
 
     print('point_table_path = ' + target_path)
 
-Here is the example configuration file.
+Here is an example configuration file.
 
 .. literalinclude:: examples/python/make-points/cc.ini
    :language: ini
 
-Here is the example script.
+Here is an example script.
 
 .. literalinclude:: examples/python/make-points/run.py
    :language: python
+   :emphasize-lines: 10,18
+
+::
+
+    $ crosscompute serve make-points
 
 .. image:: _static/make-points-result.png
 
@@ -445,25 +450,216 @@ Finally, print the image path to standard output, making sure to specify the dat
 
     print('point_image_path = ' + target_path)
 
-Here is the example configuration file.
+Here is an example configuration file.
 
 .. literalinclude:: examples/python/show-plot/cc.ini
    :language: ini
 
-Here is the example script.
+Here is an example script.
 
 .. literalinclude:: examples/python/show-plot/run.py
    :language: python
+   :emphasize-lines: 1-2,20,23
+
+::
+
+    $ crosscompute serve show-plot
 
 .. image:: _static/show-plot-result.png
 
 
 Show maps
 ---------
+The ``geotable`` data type uses the table name and column names to render the map (see :ref:`render_geometries`).
+
 First, make sure you have installed the appropriate data type plugin.  ::
 
     pip install -U crosscompute-geotable
 
-.. todo:: Show example script
-.. todo:: Show configuration file
-.. todo:: Show how various column names render different styles
+Then, save a table with spatial coordinates in ``target_folder``.  ::
+
+    from pandas import DataFrame
+    target_path = join(target_folder, 'memory.csv')
+    memory_table = DataFrame([
+        ('Todos Santos', 15.50437, -91.603653),
+        ('Semuc Champey', 15.783471, -90.230759),
+    ], columns=['Description', 'Latitude', 'Longitude'])
+    map_table.to_csv(target_path, index=False)
+
+Finally, print the table path to standard output, making sure to specify the data type suffix.  ::
+
+    print('memory_table_path = ' + target_path)
+
+Here is an example configuration file.
+
+.. literalinclude:: examples/python/show-maps/cc.ini
+   :language: ini
+
+Here is an example script.
+
+.. literalinclude:: examples/python/show-maps/show_map.py
+   :language: python
+   :emphasize-lines: 9-11
+
+Here is an example table that specifies feature radius and color.
+
+.. literalinclude:: examples/python/show-maps/locations.csv
+
+::
+
+    $ crosscompute serve show-map
+    $ crosscompute serve show-map-examples
+
+.. image:: _static/show-map-result.png
+
+Note that clicking on a feature in the map will show its attributes in a table.
+
+
+.. _render_geometries:
+
+Render geometries
+`````````````````
+If the table has a column name ending in ``_latitude`` and a column name ending in ``_longitude``, then each row will render as a point in the map.
+
+.. image:: _static/show-map-examples-geometry-point.png
+
+If the table has a column name ending in ``_wkt``, then each row will render as the corresponding `WKT geometry <https://en.wikipedia.org/wiki/Well-known_text>`_.
+
+.. image:: _static/show-map-examples-geometry-wkt.png
+
+Here are the recognized WKT geometry types:
+
+- POINT
+- LINESTRING
+- POLYGON
+- MULTIPOINT
+- MULTILINESTRING
+- MULTIPOLYGON
+
+
+Vary background
+```````````````
+To change the map background, specify the desired tile layer in the table name.  ::
+
+    a_streets_satellite_geotable
+    an_outdoors_geotable
+    a_pirates_geotable
+
+.. image:: _static/show-map-examples-background.png
+
+`Here are the available backgrounds, courtesy of Mapbox <https://www.mapbox.com/developers/api/maps/>`_.
+
+    - streets
+    - light
+    - dark
+    - satellite
+    - streets-satellite
+    - wheatpaste
+    - streets-basic
+    - comic
+    - outdoors
+    - run-bike-hike
+    - pencil
+    - pirates
+    - emerald
+    - high-contrast
+
+
+Specify radius
+``````````````
+If the table has a column that starts with ``RadiusInMeters`` or ``radius_in_meters`` or ``radius-in-meters`` or ``radius in meters`` or some variation thereof and if the row is a point geometry, then the value for the row in that column will render as the point radius in meters.  Use this setting if it is important to visualize the real-world radius of each point.
+
+.. image:: _static/show-map-examples-radius-meter.png
+
+If the table has a column that starts with ``RadiusInPixels``, ``radius_in_pixels``, ``radius-in-pixels`` or ``radius in pixels`` and if the row is a point geometry, then the value for the row in that column will render as the point radius in pixels.  This setting ensures that the point will remain the same size on the screen independent of the map zoom level.
+
+.. image:: _static/show-map-examples-radius-pixel.png
+
+Sometimes it can be convenient to scale the radius to a specific range.  Use the syntax ``RadiusInPixelsRange10-100``, ``radius_in_pixels_range_10_100``, ``radius-in-pixels-range-10-100`` or ``radius in pixels range 10 100``.
+
+.. image:: _static/show-map-examples-radius-pixel-range.png
+
+If there are multiple rows for a given geometry, then you can specify how to combine the values to compute the radius.  ::
+
+    RadiusInPixelsFromMean
+    RadiusInPixelsRange10-100FromMean
+    RadiusInPixelsFromSum
+    RadiusInPixelsRange10-100FromSum
+
+.. image:: _static/show-map-examples-radius-pixel-mean.png
+.. image:: _static/show-map-examples-radius-pixel-sum.png
+
+
+Specify fill color
+``````````````````
+Add a column named ``FillColor`` to specify the fill color of the geometry, courtesy of the `Matplotlib color module <http://matplotlib.org/api/colors_api.html#module-matplotlib.colors>`_.  Here are examples of valid values in the ``FillColor`` column.  ::
+
+    # b blue, g green, r red, c cyan, m magenta, y yellow, k black, w white
+    r 
+
+    # gray shade specified as decimal between 0 and 1
+    0.1
+
+    # hex string
+    #ff565f
+
+    # color name
+    purple
+
+If there are multiple rows for a given geometry, then you can specify how to combine the values to compute the fill color.  ::
+
+    FillColorFromMean
+    FillColorFromSum
+
+.. image:: _static/show-map-examples-specific-color-mean.png
+.. image:: _static/show-map-examples-specific-color-sum.png
+
+
+Use color scheme
+````````````````
+If the column name starts with ``Fill``, followed by the name of a recognized color scheme, then the geometry will normalize and render the value for the row in that column to the specified color scheme.
+
+.. image:: _static/show-map-examples-color-scheme-red.png
+.. image:: _static/show-map-examples-color-scheme-blue.png
+
+Here are the recognized color schemes, courtesy of `ColorBrewer <http://colorbrewer2.org>`_:
+
+- blues
+- brbg
+- bugn
+- bupu
+- gnbu
+- greens
+- greys
+- oranges
+- orrd
+- paired
+- pastel1
+- piyg
+- prgn
+- pubu
+- pubugn
+- puor
+- purd
+- purples
+- rdbu
+- rdgy
+- rdpu
+- rdylbu
+- rdylgn
+- reds
+- set1
+- set3
+- spectral
+- ylgn
+- ylgnbu
+- ylorbr
+- ylorrd
+
+If there are multiple rows for a given geometry, then you can specify how to combine the values to compute the fill color.  ::
+
+    FillBluesFromMean
+    FillBluesFromSum
+
+.. image:: _static/show-map-examples-color-scheme-blue-mean.png
+.. image:: _static/show-map-examples-color-scheme-blue-sum.png
