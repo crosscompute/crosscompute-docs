@@ -28,8 +28,8 @@ Features
 - Serve your application on any operating system.
 
 
-References
-----------
+Topics
+------
 .. toctree::
    :maxdepth: 2
 
@@ -45,8 +45,8 @@ References
     <iframe width="520" height="304" src="https://www.youtube.com/embed/r6YXbvgVfS4"></iframe> 
 
 
-Feature requests
-----------------
+Requests
+--------
 If you found a bug or want a feature, you can request to have it fixed or implemented.
 
 - `Issues with documentation <https://github.com/crosscompute/crosscompute-docs/issues>`_
@@ -56,9 +56,6 @@ If you found a bug or want a feature, you can request to have it fixed or implem
 
 For other requests, you can reach us at support@crosscompute.com.
 
-
-License
--------
 The CrossCompute Application Development Framework is licensed under the MIT license.
 
 
