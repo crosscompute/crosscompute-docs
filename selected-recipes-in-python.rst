@@ -31,9 +31,7 @@ Here is the basic tool scaffold script.
    :language: python
 
 
-.. _capture_standard_streams:
-
-Capture standard streams
+Write configuration file
 ------------------------
 In the simplest case, you have a command-line script and you want to capture its standard output.  Here is an example of such a script.
 
@@ -83,6 +81,8 @@ If your command is long, you can split it across multiple lines.
         {second_argument}
         {third_argument}
 
+
+.. _capture_standard_streams:
 
 Capture standard streams
 ````````````````````````
