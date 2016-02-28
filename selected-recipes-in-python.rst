@@ -5,7 +5,7 @@ Although we have used Python for our examples, you can easily adapt these recipe
 
 Write configuration file
 ------------------------
-In the simplest case, you have a command-line script and you want to capture its standard output.  Here is an example of such a script.
+You have a command-line script that you want to turn into a web application.  Here is an example of such a script.
 
 .. literalinclude:: examples/python/divide-floats/run.py
    :language: python
