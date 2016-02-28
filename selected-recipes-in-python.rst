@@ -3,9 +3,9 @@ Selected recipes in Python
 Although we have used Python for our examples, you can easily adapt these recipes to command-line scripts written in other programming languages.
 
 
-Start from scaffold
--------------------
-To save time, you can start building your tool from a predefined scaffold, `courtesy of Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html>`_.  ::
+Start from a scaffold
+---------------------
+To save time, you can start building your tool from a pre-defined scaffold, `courtesy of Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html>`_.  ::
 
     $ pcreate -l
     Available scaffolds:
@@ -547,22 +547,22 @@ To change the map background, specify the desired tile layer in the table name. 
 
 .. image:: _static/show-map-examples-background.png
 
-`Here are the available backgrounds, courtesy of Mapbox <https://www.mapbox.com/developers/api/maps/>`_.
+Here are the available backgrounds, `courtesy of Mapbox <https://www.mapbox.com/developers/api/maps/>`_:
 
-    - streets
-    - light
-    - dark
-    - satellite
-    - streets-satellite
-    - wheatpaste
-    - streets-basic
-    - comic
-    - outdoors
-    - run-bike-hike
-    - pencil
-    - pirates
-    - emerald
-    - high-contrast
+- streets
+- light
+- dark
+- satellite
+- streets-satellite
+- wheatpaste
+- streets-basic
+- comic
+- outdoors
+- run-bike-hike
+- pencil
+- pirates
+- emerald
+- high-contrast
 
 
 Specify radius
