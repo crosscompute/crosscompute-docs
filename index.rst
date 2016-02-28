@@ -36,6 +36,14 @@ References
    installation-instructions
    selected-recipes-in-python
 
+.. raw:: html
+
+    <iframe width="520" height="304" src="https://www.youtube.com/embed/iGkYjzguczA"></iframe> 
+    <iframe width="520" height="304" src="https://www.youtube.com/embed/kgIEwMnOoJc"></iframe> 
+    <iframe width="520" height="304" src="https://www.youtube.com/embed/7eAj9eTUfZY"></iframe> 
+    <iframe width="520" height="304" src="https://www.youtube.com/embed/HmcXOpE1Ukk"></iframe> 
+    <iframe width="520" height="304" src="https://www.youtube.com/embed/r6YXbvgVfS4"></iframe> 
+
 
 Feature requests
 ----------------

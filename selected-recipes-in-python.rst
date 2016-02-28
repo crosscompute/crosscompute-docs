@@ -476,7 +476,7 @@ First, make sure you have installed the appropriate data type plugin.  ::
 
     pip install -U crosscompute-geotable
 
-Then, save a table with spatial coordinates in ``target_folder``.  ::
+Then, save a table with spatial coordinates in ``target_folder``.  If you are using `pandas <http://pandas.pydata.org>`_, then you can use `to_csv <http://pandas.pydata.org/pandas-docs/stable/io.html#io-store-in-csv>`_, `to_json <http://pandas.pydata.org/pandas-docs/stable/io.html#io-json-writer>`_, `to_msgpack <http://pandas.pydata.org/pandas-docs/stable/io.html#io-msgpack>`_ to save in CSV, JSON, MSGPACK format, respectively.  ::
 
     from pandas import DataFrame
     target_path = join(target_folder, 'memory.csv')
@@ -663,3 +663,13 @@ If there are multiple rows for a given geometry, then you can specify how to com
 
 .. image:: _static/show-map-examples-color-scheme-blue-mean.png
 .. image:: _static/show-map-examples-color-scheme-blue-sum.png
+
+
+Deploy geotable-based tool locally
+``````````````````````````````````
+If you are deploying your geotable-based tool on a local server, then you can take advantage of higher API rate limits for map tiles by specifying a `Mapbox access token <https://www.mapbox.com/help/define-access-token/>`_.
+
+Set the ``MAPBOX_TOKEN`` environment variable before running the server.  Here is the syntax in Linux::
+
+    $ export MAPBOX_TOKEN=YOUR-ACCESS-TOKEN
+    $ crosscompute serve
