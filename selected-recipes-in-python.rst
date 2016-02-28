@@ -3,34 +3,6 @@ Selected recipes in Python
 Although we have used Python for our examples, you can easily adapt these recipes to command-line scripts written in other programming languages.
 
 
-Start from a scaffold
----------------------
-To save time, you can start building your tool from a pre-defined scaffold, `courtesy of Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html>`_.  ::
-
-    $ pcreate -l
-    Available scaffolds:
-    alchemy:                 Pyramid SQLAlchemy project using url dispatch
-    posts:                   InvisibleRoads Posts
-    pyramid_jinja2_starter:  pyramid jinja2 starter project
-    starter:                 Pyramid starter project
-    tool:                    CrossCompute Tool
-    zodb:                    Pyramid ZODB project using traversal
-
-The ``tool`` scaffold will clone the basic tool scaffold.  ::
-
-    $ pcreate -s tool your-tool-name
-
-Here is the basic tool scaffold configuration file.
-
-.. literalinclude:: examples/python/start-tool/cc.ini
-   :language: ini
-
-Here is the basic tool scaffold script.
-
-.. literalinclude:: examples/python/start-tool/run.py
-   :language: python
-
-
 Write configuration file
 ------------------------
 In the simplest case, you have a command-line script and you want to capture its standard output.  Here is an example of such a script.
@@ -201,6 +173,34 @@ Once you are satisfied that the script is configured properly, execute ``crossco
 Click **Run** to see the result.
 
 .. image:: _static/divide-floats-result.png
+
+
+Start from a scaffold
+---------------------
+To save time, you can start building your tool from a pre-defined scaffold, `courtesy of Pyramid <http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/scaffolding.html>`_.  ::
+
+    $ pcreate -l
+    Available scaffolds:
+    alchemy:                 Pyramid SQLAlchemy project using url dispatch
+    posts:                   InvisibleRoads Posts
+    pyramid_jinja2_starter:  pyramid jinja2 starter project
+    starter:                 Pyramid starter project
+    tool:                    CrossCompute Tool
+    zodb:                    Pyramid ZODB project using traversal
+
+The ``tool`` scaffold will clone the basic tool scaffold.  ::
+
+    $ pcreate -s tool your-tool-name
+
+Here is the basic tool scaffold configuration file.
+
+.. literalinclude:: examples/python/start-tool/cc.ini
+   :language: ini
+
+Here is the basic tool scaffold script.
+
+.. literalinclude:: examples/python/start-tool/run.py
+   :language: python
 
 
 .. _save_output_files:
