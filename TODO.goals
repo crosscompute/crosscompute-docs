@@ -1,3 +1,8 @@
+= Check all examples using fresh virtualenvs
+    = Check on Fedora
+    Check on Ubuntu
+    Check on Mac OS
+    Check on Windows
 Publish on read the docs
 Set up stack overflow filters
 Set up google alerts
