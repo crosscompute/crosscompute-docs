@@ -181,16 +181,16 @@ To save time, you can start building your tool from a pre-defined scaffold, `cou
 
     $ pcreate -l
     Available scaffolds:
-    alchemy:                 Pyramid SQLAlchemy project using url dispatch
-    posts:                   InvisibleRoads Posts
-    pyramid_jinja2_starter:  pyramid jinja2 starter project
-    starter:                 Pyramid starter project
-    tool:                    CrossCompute Tool
-    zodb:                    Pyramid ZODB project using traversal
+      alchemy:                 Pyramid SQLAlchemy project using url dispatch
+      cc-python:               CrossCompute Tool in Python
+      ir-posts:                InvisibleRoads Posts
+      pyramid_jinja2_starter:  Pyramid Jinja2 starter project
+      starter:                 Pyramid starter project
+      zodb:                    Pyramid ZODB project using traversal
 
-The ``tool`` scaffold will clone the basic tool scaffold.  ::
+The ``cc-python`` scaffold will clone the basic tool scaffold in Python.  ::
 
-    $ pcreate -s tool your-tool-name
+    $ pcreate -s cc-python your-tool-name
 
 Here is the basic tool scaffold configuration file.
 
