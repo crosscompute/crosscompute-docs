@@ -391,6 +391,19 @@ There are two ways to organize your files when serving multiple tools:
    :language: ini
 
 
+Call an external API
+--------------------
+If your script requires an API key because it calls an external API, please specify the API key as an environment variable in your script.  ::
+
+    from os import environ
+    environ['GOOGLE_KEY']
+
+The following APIs are supported:
+
+- GOOGLE_KEY
+- MAPBOX_TOKEN
+
+
 Show tables
 -----------
 First, make sure you have installed the appropriate data type plugin.  ::
