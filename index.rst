@@ -25,7 +25,7 @@ You wrote useful scripts and want folks to use them.
 Features
 --------
 - Write your command-line script in any programming language.
-- Serve your application on any operating system.
+- Serve your web application on any operating system.
 
 
 Topics

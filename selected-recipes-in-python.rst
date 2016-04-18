@@ -507,14 +507,15 @@ Here is an example configuration file.
 
 .. literalinclude:: examples/python/show-maps/cc.ini
    :language: ini
+   :lines: 1-8
 
-Here is an example script.
+Here is an example script. Please save it as `show_map.py`.
 
 .. literalinclude:: examples/python/show-maps/show_map.py
    :language: python
    :emphasize-lines: 9-11
 
-Here is an example table that specifies feature radius and color.
+Here is an example table that specifies feature radius and color. Please save it as `locations.csv`.
 
 .. literalinclude:: examples/python/show-maps/locations.csv
 
