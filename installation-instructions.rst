@@ -18,6 +18,23 @@ Troubleshooting
 ---------------
 
 
+Cross-Platform
+~~~~~~~~~~~~~~
+
+
+Please install ABC for XYZ support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Some data type plugins use optional dependencies to provide extra features. ::
+
+    >>> import crosscompute_table
+    Please install pandas for full table support
+    >>> import crosscompute_geotable
+    Please install matplotlib for full color support
+    Please install GDAL, shapely, geometryIO for shapefile support
+
+Instructions for installing the dependencies vary by operating system.
+
+
 Fedora
 ~~~~~~
 

@@ -10,7 +10,7 @@ def run(target_folder, point_count, x_min, x_max, y_min, y_max):
     target_path = join(target_folder, 'points.csv')
     csv_writer = csv.writer(open(target_path, 'w'))
     csv_writer.writerow(['x', 'y'])
-    for index in xrange(point_count):
+    for index in range(point_count):
         x = randint(x_min, x_max)
         y = randint(y_min, y_max)
         csv_writer.writerow([x, y])
