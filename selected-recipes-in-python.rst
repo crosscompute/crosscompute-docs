@@ -371,6 +371,27 @@ And here is the resulting interface.
 .. image:: _static/show-popovers-result.png
 
 
+Add descriptions
+----------------
+For longer descriptions and links, you can customize your tool and result interface in `Markdown <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>`_ format.
+
+.. literalinclude:: examples/python/calculate-tip/cc.ini
+   :language: ini
+   :emphasize-lines: 7-8
+
+Here is the tool template.
+
+.. literalinclude:: examples/python/calculate-tip/tool.md
+
+Here is the result template.
+
+.. literalinclude:: examples/python/calculate-tip/result.md
+
+And here is the resulting interface.
+
+.. image:: _static/add-descriptions.png
+
+
 Serve multiple tools
 --------------------
 There are two ways to organize your files when serving multiple tools:

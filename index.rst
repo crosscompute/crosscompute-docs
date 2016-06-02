@@ -1,31 +1,31 @@
-CrossCompute application development framework
-==============================================
+CrossCompute tool framework
+===========================
 You wrote useful scripts and want folks to use them.
 
-1. Turn your scripts into web applications by writing a configuration file.
-2. Host the web applications on CrossCompute_ or your own server.
+1. Turn your scripts into web apps by writing a configuration file.
+2. Host the web apps on your server or `our server <https://crosscompute.com>`_.
 
-::
+
+Usage
+-----
+Install. ::
 
     pip install crosscompute
 
-    cat > run.py << EOF
-    import sys
-    print('y = %s' % len(sys.argv[1]))
-    EOF
+Configure. ::
 
-    cat > cc.ini << EOF
-    [crosscompute get-length]
-    command_template = python run.py {x}
-    EOF
+    [crosscompute my-fantastic-script]
+    command_template = python my_spectacular_script.py {x}
 
-    crosscompute serve
+Serve! ::
+
+    crosscompute serve --host 0.0.0.0 --port 4444 --website_name XYZ
 
 
 Features
 --------
 - Write your command-line script in any programming language.
-- Serve your web application on any operating system.
+- Serve your web app on any operating system.
 
 
 Topics
@@ -51,12 +51,9 @@ If you found a bug or want a feature, you can request to have it fixed or implem
 
 - `Issues with documentation <https://github.com/crosscompute/crosscompute-docs/issues>`_
 - `Issues with examples <https://github.com/crosscompute/crosscompute-examples/issues>`_
-- `Issues with application development framework <https://github.com/crosscompute/crosscompute/issues>`_
-- `Issues with data type plugins <https://github.com/crosscompute/crosscompute-types/issues>`_
+- `Issues with tool framework <https://github.com/crosscompute/crosscompute/issues>`_
+- `Issues with data types <https://github.com/crosscompute/crosscompute-types/issues>`_
 
 For other requests, you can reach us at support@crosscompute.com.
 
-The CrossCompute Application Development Framework is licensed under the MIT license.
-
-
-.. _CrossCompute: https://crosscompute.com
+The CrossCompute tool framework is licensed under the MIT license.

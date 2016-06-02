@@ -10,8 +10,10 @@ To separate CrossCompute packages from system packages, we recommend using `virt
     # Activate isolated environment 
     source $VIRTUAL_ENV/bin/activate
 
-    # Install application framework and data types
+    # Install tool framework and data types
     pip install -U crosscompute crosscompute-types
+
+Note that ``crosscompute-types`` is a shortcut for installing and updating the standard data types (`integer <https://pypi.python.org/pypi/crosscompute-integer>`_, `text <https://pypi.python.org/pypi/crosscompute-text>`_, `image <https://pypi.python.org/pypi/crosscompute-image>`_, `table <https://pypi.python.org/pypi/crosscompute-table>`_, `geotable <https://pypi.python.org/pypi/crosscompute-geotable>`_). ::
 
 
 Troubleshooting
@@ -91,8 +93,8 @@ Windows
 ~~~~~~~
 
 
-'virtualenv' is not recognized as an internal or external command, operable program or batch file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+'virtualenv' is not recognized as an internal or external command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Run Command Prompt with administrative privileges (see `IOError: [Errno 13] Permission denied`_).
 2. Change to the directory of your target Python installation ::
 
@@ -118,7 +120,7 @@ IOError: [Errno 13] Permission denied
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Run Command Prompt with administrative privileges.
 
-- For Windows 8+, right-click on the Windows Start icon and select Command Prompt (Admin).
+- For Windows 8+, right-click on the Windows Start icon and select ``Command Prompt (Admin)``.
 
 
 Unable to find vcvarsall.bat
