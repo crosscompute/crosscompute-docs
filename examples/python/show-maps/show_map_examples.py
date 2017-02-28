@@ -24,7 +24,6 @@ prepare_map('geometry_point_example_dark', show_table=False)
 prepare_map('geometry_point_example_streets_satellite', show_table=False)
 prepare_map('geometry_wkt_example')
 
-prepare_map('radius_meter_example')
 prepare_map('radius_pixel_example')
 prepare_map('radius_pixel_range_example')
 prepare_map('radius_pixel_mean_example')
