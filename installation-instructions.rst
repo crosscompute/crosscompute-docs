@@ -13,7 +13,7 @@ To separate CrossCompute packages from system packages, we recommend using `virt
     # Install tool framework and data types
     pip install -U crosscompute crosscompute-types
 
-Note that ``crosscompute-types`` is a shortcut for installing and updating the standard data types (`integer <https://pypi.python.org/pypi/crosscompute-integer>`_, `text <https://pypi.python.org/pypi/crosscompute-text>`_, `image <https://pypi.python.org/pypi/crosscompute-image>`_, `table <https://pypi.python.org/pypi/crosscompute-table>`_, `geotable <https://pypi.python.org/pypi/crosscompute-geotable>`_). ::
+Note that ``crosscompute-types`` is a shortcut for installing and updating the standard data types (`integer <https://pypi.python.org/pypi/crosscompute-integer>`_, `text <https://pypi.python.org/pypi/crosscompute-text>`_, `image <https://pypi.python.org/pypi/crosscompute-image>`_, `table <https://pypi.python.org/pypi/crosscompute-table>`_, `geotable <https://pypi.python.org/pypi/crosscompute-geotable>`_).
 
 
 Troubleshooting
