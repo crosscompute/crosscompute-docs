@@ -54,11 +54,11 @@ If your command is long, you can split it across multiple lines.
         {third_argument}
 
 
-.. _capture_standard_streams:
+.. _capture_raw_output:
 
-Capture standard streams
-````````````````````````
-CrossCompute parses but does not save standard output or standard error from the script, unless requested to do so explicitly.
+Capture raw output
+``````````````````
+CrossCompute parses but does not save raw output from the script, unless requested to do so explicitly.
 
 .. literalinclude:: examples/python/divide-floats/cc.ini
    :language: ini
@@ -94,27 +94,21 @@ First, check that the application development framework is installed on your sys
 Then execute ``crosscompute run`` in the parent folder or same folder as your configuration file.  ::
 
     $ crosscompute run
-    [tool_definition]
+    [tool_location]
+    configuration_path = ~/Projects/crosscompute-docs/examples/python/divide-floats/cc.ini
     tool_name = divide-floats
-    configuration_path = ~/Experiments/divide-floats/cc.ini
-    command = python run.py 10 3
 
     [result_arguments]
     x = 10
     y = 3
-    target_folder = /tmp/divide-floats/results/1
 
-    [standard_output]
-    10 divided by 3 is 3.33333333333
+    [raw_output]
+    10 divided by 3 is 3.3333333333333335
 
     [result_properties]
-    standard_output = 10 divided by 3 is 3.33333333333
-    execution_time_in_seconds = 0.0374681949615
-
-The ``target_folder`` contains the result generated from this run.  Each subsequent run will save the result in a new ``target_folder``.  ::
-
-    $ ls /tmp/divide-floats/results/1
-    result.cfg  standard_output.log
+    raw_output = 10 divided by 3 is 3.3333333333333335
+    execution_time_in_seconds = 0.04039597511291504
+    command_path = ~/.crosscompute/divide-floats/results/2/x.sh
 
 If there is more than one tool, you will need to specify the tool name explicitly.  ::
 
@@ -133,33 +127,32 @@ Sometimes, you might want to override default argument values.  Use ``--help`` t
     --x X
     --y Y
 
-If our script terminates unexpectedly, ``crosscompute run`` will show any errors.  In this case, the standard error stream is rendered twice because ``show_standard_error = True``.  ::
+If our script terminates unexpectedly, ``crosscompute run`` will show the errors.  In this case, the exception renders twice because ``show_raw_output = True``.  ::
 
     $ crosscompute run --y 0
-    [tool_definition]
+    [tool_location]
+    configuration_path = ~/Projects/crosscompute-docs/examples/python/divide-floats/cc.ini
     tool_name = divide-floats
-    configuration_path = ~/Experiments/divide-floats/cc.ini
-    command = python run.py 10 0
-
+    
     [result_arguments]
     x = 10
     y = 0
-    target_folder = /tmp/divide-floats/results/2
-
-    [standard_error]
+    
+    [raw_output]
     Traceback (most recent call last):
-      File "run.py", line 3, in <module>
+      File "run.py", line 4, in <module>
         print('{} divided by {} is {}'.format(x, y, float(x) / float(y)))
     ZeroDivisionError: float division by zero
-
+    
     [result_properties]
     return_code = 1
-    standard_error = 
-    Traceback (most recent call last):
-      File "run.py", line 3, in <module>
-        print('{} divided by {} is {}'.format(x, y, float(x) / float(y)))
-    ZeroDivisionError: float division by zero
-    execution_time_in_seconds = 0.166897058487
+    raw_output =
+      Traceback (most recent call last):
+        File "run.py", line 4, in <module>
+          print('{} divided by {} is {}'.format(x, y, float(x) / float(y)))
+      ZeroDivisionError: float division by zero
+    execution_time_in_seconds = 0.14070677757263184
+    command_path = ~/.crosscompute/divide-floats/results/4/x.sh
 
 
 Serve tool
@@ -324,8 +317,8 @@ Log errors and warnings
 -----------------------
 There are two ways that you can communicate an error or warning to the user:
 
-- Option 1: Set ``show_standard_error = True`` in the configuration file (see :ref:`capture_standard_streams`).  The advantage is that this does not require changes in the script.  The disadvantage is that you might show proprietary or unnecessary information.
-- Option 2: Write to standard error in the format ``abc = xyz``.  The advantage is that this provides finer control of the information that you share with the user.  The disadvantage is that you will have to make sure that your messages are in the format ``abc = xyz``.  Note that the spaces around the equal sign are important.
+- Option 1: Set ``show_raw_output = True`` in the configuration file (see :ref:`capture_raw_output`).  The advantage is that this does not require changes in the script.
+- Option 2: Print to standard output in the format ``abc.error = xyz``.  The advantage is that this provides finer control of the information that you share with the user.
 
 .. literalinclude:: examples/python/divide-integers/cc.ini
    :language: ini
@@ -335,22 +328,6 @@ There are two ways that you can communicate an error or warning to the user:
    :emphasize-lines: 8
 
 .. image:: _static/divide-integers-error.png
-
-In Python, you can use the ``exit`` system function for errors (which will set a non-zero return code) and use the ``print_error`` convenience function (which simply prints to standard error) for warnings.  ::
-
-    from invisibleroads_macros.log import print_error
-    print_error('xyz.warning = cave canem')
-
-
-Specify dependencies
---------------------
-You can put dependencies in the configuration file.  Currently, the framework supports dependencies for the following languages:
-
-- Python
-
-.. literalinclude:: examples/python/get-locations/cc.ini
-   :language: ini
-   :emphasize-lines: 6-7
 
 
 Specify help popovers
