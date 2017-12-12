@@ -1,4 +1,4 @@
-Installation instructions
+Installation Instructions
 =========================
 To separate CrossCompute packages from system packages, we recommend using `virtualenv <https://virtualenv.readthedocs.org>`_ to prepare an isolated environment. ::
 

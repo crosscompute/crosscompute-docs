@@ -1,4 +1,4 @@
-Selected recipes in Python
+Selected Recipes in Python
 ==========================
 Although we have used Python for our examples, you can easily adapt these recipes to command-line scripts written in other programming languages.
 
@@ -80,7 +80,7 @@ Additionally, ``crosscompute serve`` uses the default values to populate the too
 
 will render the following form.
 
-.. image:: _static/get-size-tool.png
+.. image:: ../_static/get-size-tool.png
 
 
 Run tool
@@ -161,11 +161,11 @@ Once you are satisfied that the script is configured properly, execute ``crossco
 
     $ crosscompute serve
 
-.. image:: _static/divide-floats-tool.png
+.. image:: ../_static/divide-floats-tool.png
 
 Click **Run** to see the result.
 
-.. image:: _static/divide-floats-result.png
+.. image:: ../_static/divide-floats-result.png
 
 
 Start from a scaffold
@@ -233,7 +233,7 @@ Serve the script by typing ``crosscompute serve`` in the same folder as ``cc.ini
 
 Run the tool, then click ``Download`` to receive an archive containing the result configuration as well as any files saved in the ``target_folder``.
 
-.. image:: _static/save-text-result.png
+.. image:: ../_static/save-text-result.png
 
 Additionally, the tool will be able to render the content of those files for selected data types (see :ref:`specify_data_types_for_result_properties`).  Here is a slightly more involved example that counts the number of each non-whitespace character in a text file.
 
@@ -247,7 +247,7 @@ The script tells CrossCompute to render the output file as a table by printing a
 
 Running the tool using ``crosscompute serve`` renders the desired table.
 
-.. image:: _static/count-characters-result.png
+.. image:: ../_static/count-characters-result.png
 
 
 Specify data types for tool arguments
@@ -257,7 +257,7 @@ Specifying the data type of a tool argument provides the following benefits.
 - The script can assume that an argument matches its specified data type.  For example, the script below can assume that its first argument is an integer because the framework performs basic integer validation before running the script.
 - The corresponding web application renders an appropriate query for the tool argument in the form.
 
-.. image:: _static/load-inputs-tool.png
+.. image:: ../_static/load-inputs-tool.png
 
 The suffix of a tool argument determines its data type.  Specify tool arguments in the ``command_template`` by enclosing argument names in curly brackets (see :ref:`specify_command_line_arguments`).  In the configuration file below, the arguments are ``some_count`` (integer), ``a_text_path`` (text), ``a_table_path`` (table).
 
@@ -308,9 +308,9 @@ Serve and run the tool to render the result.  ::
 
     $ crosscompute serve
 
-.. image:: _static/save-outputs-table.png
-.. image:: _static/save-outputs-image.png
-.. image:: _static/save-outputs-geotable.png
+.. image:: ../_static/save-outputs-table.png
+.. image:: ../_static/save-outputs-image.png
+.. image:: ../_static/save-outputs-geotable.png
 
 
 Log errors and warnings
@@ -327,7 +327,7 @@ There are two ways that you can communicate an error or warning to the user:
    :language: python
    :emphasize-lines: 8
 
-.. image:: _static/divide-integers-error.png
+.. image:: ../_static/divide-integers-error.png
 
 
 Specify help popovers
@@ -345,7 +345,7 @@ Here is an example configuration file.
 
 And here is the resulting interface.
 
-.. image:: _static/show-popovers-result.png
+.. image:: ../_static/show-popovers-result.png
 
 
 Add descriptions
@@ -366,7 +366,7 @@ Here is the result template.
 
 And here is the resulting interface.
 
-.. image:: _static/add-descriptions.png
+.. image:: ../_static/add-descriptions.png
 
 
 Serve multiple tools
@@ -435,7 +435,7 @@ Here is an example script.
 
     $ crosscompute serve make-points
 
-.. image:: _static/make-points-result.png
+.. image:: ../_static/make-points-result.png
 
 
 Show images
@@ -476,7 +476,7 @@ Here is an example script.
 
     $ crosscompute serve show-plot
 
-.. image:: _static/show-plot-result.png
+.. image:: ../_static/show-plot-result.png
 
 
 Show maps
@@ -522,7 +522,7 @@ Here is an example table that specifies feature radius and color. Please save it
     $ crosscompute serve show-map
     $ crosscompute serve show-map-examples
 
-.. image:: _static/show-map-result.png
+.. image:: ../_static/show-map-result.png
 
 Note that clicking on a feature in the map will show its attributes in a table.
 
@@ -533,11 +533,11 @@ Render geometries
 `````````````````
 If the table has a column name ending in ``_latitude`` and a column name ending in ``_longitude``, then each row will render as a point in the map.
 
-.. image:: _static/show-map-examples-geometry-point.png
+.. image:: ../_static/show-map-examples-geometry-point.png
 
 If the table has a column name ending in ``_wkt``, then each row will render as the corresponding `WKT geometry <https://en.wikipedia.org/wiki/Well-known_text>`_.
 
-.. image:: _static/show-map-examples-geometry-wkt.png
+.. image:: ../_static/show-map-examples-geometry-wkt.png
 
 Here are the recognized WKT geometry types:
 
@@ -557,7 +557,7 @@ To change the map background, specify the desired tile layer in the table name. 
     an_outdoors_geotable
     a_pirates_geotable
 
-.. image:: _static/show-map-examples-background.png
+.. image:: ../_static/show-map-examples-background.png
 
 Here are the available backgrounds, `courtesy of Mapbox <https://www.mapbox.com/developers/api/maps/>`_:
 
@@ -581,15 +581,15 @@ Specify radius
 ``````````````
 If the table has a column that starts with ``RadiusInMeters`` or ``radius_in_meters`` or ``radius-in-meters`` or ``radius in meters`` or some variation thereof and if the row is a point geometry, then the value for the row in that column will render as the point radius in meters.  Use this setting if it is important to visualize the real-world radius of each point.
 
-.. image:: _static/show-map-examples-radius-meter.png
+.. image:: ../_static/show-map-examples-radius-meter.png
 
 If the table has a column that starts with ``RadiusInPixels``, ``radius_in_pixels``, ``radius-in-pixels`` or ``radius in pixels`` and if the row is a point geometry, then the value for the row in that column will render as the point radius in pixels.  This setting ensures that the point will remain the same size on the screen independent of the map zoom level.
 
-.. image:: _static/show-map-examples-radius-pixel.png
+.. image:: ../_static/show-map-examples-radius-pixel.png
 
 Sometimes it can be convenient to scale the radius to a specific range.  Use the syntax ``RadiusInPixelsRange10-100``, ``radius_in_pixels_range_10_100``, ``radius-in-pixels-range-10-100`` or ``radius in pixels range 10 100``.
 
-.. image:: _static/show-map-examples-radius-pixel-range.png
+.. image:: ../_static/show-map-examples-radius-pixel-range.png
 
 If there are multiple rows for a given geometry, then you can specify how to combine the values to compute the radius.  ::
 
@@ -598,8 +598,8 @@ If there are multiple rows for a given geometry, then you can specify how to com
     RadiusInPixelsFromSum
     RadiusInPixelsRange10-100FromSum
 
-.. image:: _static/show-map-examples-radius-pixel-mean.png
-.. image:: _static/show-map-examples-radius-pixel-sum.png
+.. image:: ../_static/show-map-examples-radius-pixel-mean.png
+.. image:: ../_static/show-map-examples-radius-pixel-sum.png
 
 
 Specify fill color
@@ -623,16 +623,16 @@ If there are multiple rows for a given geometry, then you can specify how to com
     FillColorFromMean
     FillColorFromSum
 
-.. image:: _static/show-map-examples-specific-color-mean.png
-.. image:: _static/show-map-examples-specific-color-sum.png
+.. image:: ../_static/show-map-examples-specific-color-mean.png
+.. image:: ../_static/show-map-examples-specific-color-sum.png
 
 
 Use color scheme
 ````````````````
 If the column name starts with ``Fill``, followed by the name of a recognized color scheme, then the geometry will normalize and render the value for the row in that column to the specified color scheme.
 
-.. image:: _static/show-map-examples-color-scheme-red.png
-.. image:: _static/show-map-examples-color-scheme-blue.png
+.. image:: ../_static/show-map-examples-color-scheme-red.png
+.. image:: ../_static/show-map-examples-color-scheme-blue.png
 
 Here are the recognized color schemes, courtesy of `ColorBrewer <http://colorbrewer2.org>`_:
 
@@ -673,8 +673,8 @@ If there are multiple rows for a given geometry, then you can specify how to com
     FillBluesFromMean
     FillBluesFromSum
 
-.. image:: _static/show-map-examples-color-scheme-blue-mean.png
-.. image:: _static/show-map-examples-color-scheme-blue-sum.png
+.. image:: ../_static/show-map-examples-color-scheme-blue-mean.png
+.. image:: ../_static/show-map-examples-color-scheme-blue-sum.png
 
 
 Deploy geotable-based tool locally
