@@ -542,11 +542,13 @@ If the table has a column name ending in ``_wkt``, then each row will render as 
 Here are the recognized WKT geometry types:
 
 - POINT
-- LINESTRING
-- POLYGON
 - MULTIPOINT
+- LINESTRING
 - MULTILINESTRING
+- POLYGON
 - MULTIPOLYGON
+
+Specify WKT coordinates using (longitude, latitude) coordinate order.
 
 
 Vary background
