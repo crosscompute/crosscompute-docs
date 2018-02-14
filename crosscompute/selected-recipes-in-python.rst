@@ -535,7 +535,7 @@ If the table has a column name ending in ``_latitude`` and a column name ending 
 
 .. image:: ../_static/show-map-examples-geometry-point.png
 
-If the table has a column name ending in ``_wkt``, then each row will render as the corresponding `WKT geometry <https://en.wikipedia.org/wiki/Well-known_text>`_.
+If the table has a column name ending in ``_wkt``, then each row will render as the corresponding `WKT geometry <https://en.wikipedia.org/wiki/Well-known_text>`_.  Specify WKT coordinates using (longitude, latitude) coordinate order.
 
 .. image:: ../_static/show-map-examples-geometry-wkt.png
 
@@ -547,8 +547,6 @@ Here are the recognized WKT geometry types:
 - MULTILINESTRING
 - POLYGON
 - MULTIPOLYGON
-
-Specify WKT coordinates using (longitude, latitude) coordinate order.
 
 
 Vary background
