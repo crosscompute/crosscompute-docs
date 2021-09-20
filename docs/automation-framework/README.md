@@ -1,6 +1,6 @@
 # Automation Framework
 
-Automate your Jupyter notebooks and Python scripts as web-based reports, tools, widgets, dashboards, wizards.
+Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, wizards.
 
 - Reports are documents that update when the data changes.
 - Tools are forms that transform input variables into output variables.
@@ -22,3 +22,100 @@ crosscompute serve.yml
 ```
 
 ## Configuration
+
+Configuration files tell CrossCompute how to render your variables and run your script.
+
+### Report
+
+Here is an example of a report configuration:
+
+TODO
+
+### Tool
+
+Here is an example of a tool configuration:
+
+TODO
+
+### Widget
+
+Here is an example of a widget configuration:
+
+TODO
+
+### Dashboard
+
+Here is an example of a dashboard configuration:
+
+TODO
+
+### Wizard
+
+Here is an example of a wizard configuration:
+
+TODO
+
+## Script
+
+CrossCompute will run the script specified in the configuration file. The script can be a Python script, a Jupyter notebook or a Bash command -- in case your code is in another programming language such as R or Julia. CrossCompute will define the following environment variables before running your script:
+
+- ``CROSSCOMPUTE_INPUT_FOLDER``: Your script should expect to find input variables saved to this folder at the relative path specified in the configuration file.
+- ``CROSSCOMPUTE_OUTPUT_FOLDER``: Your script should save output variables to this folder at the relative path specified in the configuration file.
+- ``CROSSCOMPUTE_LOG_FOLDER``: Your script can save log variables to this folder at the relative path specified in the configuration file. These log variables will be visible to the user.
+- ``CROSSCOMPUTE_DEBUG_FOLDER``: Your script can save debug variables to this folder at the relative path specified in the configuration file. These debug variables will not be visible to the user.
+
+Here is an example of a simple script that adds two numbers, the corresponding configuration file and resulting web-based tool.
+
+**Script (```run.ipynb```)**
+
+```python
+import json
+from os import environ
+from os.path import join
+
+input_folder = environ.get(
+    'CROSSCOMPUTE_INPUT_FOLDER', 'tests/integers/input')
+output_folder = environ.get(
+    'CROSSCOMPUTE_OUTPUT_FOLDER', 'tests/integers/output')
+
+variables = json.load(open(join(input_folder, 'variables.json'), 'rt'))
+c = variables['a'] + variables['b']
+
+json.dump({
+    'c': c,
+}, open(join(output_folder, 'variables.json'), 'wt'))
+```
+
+**Configuration (```serve.yml```)**
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Add Numbers
+version: 0.1.0
+input:
+  variables:
+    - id: a
+      view: number
+      path: variables.json
+    - id: b
+      view: number
+      path: variables.json
+output:
+  variables:
+    - id: c
+      view: number
+      path: variables.json
+tests:
+  - folder: tests/integers
+  - folder: tests/floats
+script:
+  folder: .
+  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+layout:
+  name: input output
+```
+
+**Tool**
+
+TODO: Screenshot
