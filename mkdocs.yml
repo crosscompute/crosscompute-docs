@@ -6,3 +6,6 @@ nav:
   - Editing Platform: editing-platform/README.md
   - Publishing Platform: publishing-platform/README.md
   - Analytics Marketplace: analytics-marketplace/README.md
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
