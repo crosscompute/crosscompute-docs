@@ -1,8 +1,8 @@
-site_name: CrossCompute Documentation
+site_name: CrossCompute Docs
 theme: material
 nav:
-  - CrossCompute Analytics Automation System: README.md
-  - CrossCompute Analytics Automation Framework: analytics-automation-framework/README.md
-  - CrossCompute Analytics Editing Service: analytics-editing-service/README.md
-  - CrossCompute Analytics Publishing Platform: analytics-publishing-platform/README.md
-  - CrossCompute Analytics Publishing Marketplace: analytics-publishing-marketplace/README.md
+  - Automation System: README.md
+  - Automation Framework: automation-framework/README.md
+  - Editing Platform: editing-platform/README.md
+  - Publishing Platform: publishing-platform/README.md
+  - Analytics Marketplace: analytics-marketplace/README.md

@@ -1,7 +1,6 @@
-# CrossCompute Analytics Automation Framework
+# Automation Framework
 
 ```bash
 crosscompute
 crosscompute serve.yml
 ```
-
