@@ -137,7 +137,55 @@ Configuration files tell CrossCompute how to render your variables and run your 
 
 ```yaml
 ---
-crosscompute: 0.9.0
+crosscompute: { version of crosscompute }
+name: { name of your report, tool, widget, dashboard, wizard }
+version: { version of your report, tool, widget, dashboard, wizard }
+# imports:
+#   - id: {}
+#     path: {}
+#     uri: {}
+#     name: {}
+#     version: {}
+# peers:
+#   - uri: {}
+input:
+  variables:
+    - id: {}
+      view: {}
+      path: {}
+# templates:
+#   - path: {}
+output:
+  variables:
+    - id: {}
+      view: {}
+      path: {}
+# templates:
+#   - path: {}
+tests:
+  - folder: tests/standard
+# batches:
+#   - folder: {}
+script:
+  folder: {}
+  command: {}
+  function: {}
+  schedule: {}
+# repository:
+#   uri: {}
+#   folder: {}
+# environment:
+#   image:
+#   processor:
+#   memory:
+display:
+  style: {}
+  header:
+    path: {}
+  footer:
+    path: {}
+  layout: {}
+  format: {}
 ```
 
 ## Examples
@@ -191,8 +239,14 @@ environment:
   image: docker.io/library/python:slim-buster
   processor: cpu
   memory: tiny
-layout:
-  name: output
+display:
+  style: report.css
+  header:
+    path: header.md
+  footer:
+    path: footer.md
+  layout: output
+  format: pdf
 ```
 
 TODO: Add example of markdown template
@@ -203,10 +257,23 @@ Here is an example of a tool configuration:
 
 ```yaml
 ---
+# version of crosscompute
 crosscompute: 0.9.0
+
+# name of your report, tool, widget, dashboard, wizard
 name: Add Numbers
+
+# version of your report, tool, widget, dashboard, wizard
 version: 0.1.0
+
+# input configuration
 input:
+
+  # input variables
+  #   - id to use when referencing your variable in the template
+  #   - view to use when rendering your variable on the display
+  #   - path where your script loads the variable,
+  #     relative to the input folder
   variables:
     - id: a
       view: number
@@ -214,19 +281,40 @@ input:
     - id: b
       view: number
       path: variables.json
+
+# output configuration
 output:
+
+  # output variables
+  #   - id to use when referencing your variable in the template
+  #   - view to use when rendering your variable on the display
+  #   - path where your script saves the variable,
+  #     relative to the output folder
   variables:
     - id: c
       view: number
       path: variables.json
+
+# test configuration
+#   - folder where test is defined
 tests:
   - folder: tests/integers
   - folder: tests/floats
+
+# script configuration
 script:
+
+  # folder where script should run
   folder: .
-  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
-layout:
-  name: input output
+
+  # command to use to run your script
+  command: python run.py
+
+# display configuration
+display:
+
+  # layout to use when rendering your variables
+  layout: input output
 ```
 
 ### Widget
@@ -249,8 +337,8 @@ script:
   folder: .
   function: run.plot
   schedule: '* * * * * * *'
-layout:
-  name: output
+display:
+  layout: output
 ```
 
 ### Dashboard
@@ -270,8 +358,8 @@ imports:
 output:
   templates:
     - path: dashboard.md
-layout:
-  name: output
+display:
+  layout: output
 ```
 
 TODO: Add example of markdown template
@@ -305,8 +393,12 @@ tests:
 script:
   folder: .
   command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
-layout:
-  name: output
+display:
+  layout: output
 ```
 
 TODO: Add example or screenshot of ipynb template
+
+## Plugins
+
+TODO: Add instructions on how to make a view plugin
