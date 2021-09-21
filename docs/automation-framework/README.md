@@ -21,43 +21,9 @@ crosscompute
 crosscompute serve.yml
 ```
 
-## Configuration
-
-Configuration files tell CrossCompute how to render your variables and run your script.
-
-### Report
-
-Here is an example of a report configuration:
-
-TODO
-
-### Tool
-
-Here is an example of a tool configuration:
-
-TODO
-
-### Widget
-
-Here is an example of a widget configuration:
-
-TODO
-
-### Dashboard
-
-Here is an example of a dashboard configuration:
-
-TODO
-
-### Wizard
-
-Here is an example of a wizard configuration:
-
-TODO
-
 ## Script
 
-CrossCompute will run the script specified in the configuration file. The script can be a Python script, a Jupyter notebook or a Bash command -- in case your code is in another programming language such as R or Julia. CrossCompute will define the following environment variables before running your script:
+CrossCompute will run your script as specified in your configuration file. The script can be a Python script, a Jupyter notebook or a Bash command -- in case your code is in another programming language such as R or Julia. CrossCompute will define the following environment variables before running your script:
 
 - ``CROSSCOMPUTE_INPUT_FOLDER``: Your script should expect to find input variables saved to this folder at the relative path specified in the configuration file.
 - ``CROSSCOMPUTE_OUTPUT_FOLDER``: Your script should save output variables to this folder at the relative path specified in the configuration file.
@@ -121,3 +87,184 @@ layout:
 TODO: Screenshot
 
 TODO: Add links to crosscompute-examples github
+
+## Configuration
+
+Configuration files tell CrossCompute how to render your variables and run your script.
+
+```yaml
+---
+# Version of CrossCompute
+crosscompute: 0.9.0
+# Name of your report, tool, widget, dashboard, wizard
+name: Calculate Tip
+# Version of your report, tool, widget, dashboard, wizard
+version: 0.0.1
+```
+
+### Report
+
+Here is an example of a report configuration:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Compute Logarithms
+version: 0.0.1
+input:
+  variables:
+    - id: base
+      view: number
+      path: variables.json
+    - id: start
+      view: number
+      path: variables.json
+    - id: stop
+      view: number
+      path: variables.json
+    - id: step
+      view: number
+      path: variables.json
+output:
+  variables:
+    - id: logarithms
+      view: table
+      path: values.csv
+  templates:
+    - path: report.md
+tests:
+  - folder: tests/base-e
+  - folder: tests/base-10
+batches:
+  - folder: batches/base-2
+  - folder: batches/base-e
+  - folder: batches/base-10
+script:
+  folder: .
+  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+repository:
+  uri: https://github.com/crosscompute/crosscompute-examples
+  folder: reports/compute-logarithms
+environment:
+  image: docker.io/library/python:slim-buster
+  processor: cpu
+  memory: tiny
+layout:
+  name: output
+```
+
+TODO: Add example of markdown template
+
+### Tool
+
+Here is an example of a tool configuration:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Add Numbers
+version: 0.1.0
+input:
+  variables:
+    - id: a
+      view: number
+      path: variables.json
+    - id: b
+      view: number
+      path: variables.json
+output:
+  variables:
+    - id: c
+      view: number
+      path: variables.json
+tests:
+  - folder: tests/integers
+  - folder: tests/floats
+script:
+  folder: .
+  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+layout:
+  name: input output
+```
+
+### Widget
+
+Here is an example of a widget configuration:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Watch CPU Usage
+version: 0.0.1
+output:
+  variables:
+    - id: cpu-usage
+      view: number
+      path: variables.json
+tests:
+  - folder: tests/standard
+script:
+  folder: .
+  function: run.plot
+  schedule: '* * * * * * *'
+layout:
+  name: output
+```
+
+### Dashboard
+
+Here is an example of a dashboard configuration:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Watch Machine
+version: 0.0.1
+imports:
+  - id: cpu
+    path: ../../widgets/watch-cpu/serve.yml
+  - id: ram
+    path: ../../widgets/watch-ram/serve.yml
+output:
+  templates:
+    - path: dashboard.md
+layout:
+  name: output
+```
+
+TODO: Add example of markdown template
+
+### Wizard
+
+Here is an example of a wizard configuration:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: Encourage Exercise
+version: 0.0.1
+input:
+  variables:
+    - id: more_exercise
+      view: boolean
+      path: variables.json
+    - id: simple_exercise
+      view: string
+      path: variables.json
+  templates:
+    - path: ask.ipynb
+output:
+  variables:
+    - id: summary
+      view: markdown
+      path: summary.md
+tests:
+  - folder: tests/standard
+script:
+  folder: .
+  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+layout:
+  name: output
+```
+
+TODO: Add example or screenshot of ipynb template
