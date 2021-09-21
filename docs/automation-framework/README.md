@@ -32,21 +32,30 @@ CrossCompute will run your script as specified in your configuration file. The s
 
 Here is an example of a simple script that adds two numbers, the corresponding configuration file and resulting web-based tool.
 
-**Script (```run.ipynb```)**
+**Script (```run.py```)**
 
 ```python
 import json
 from os import environ
 from os.path import join
 
+
+# Get folder paths from environment variables
 input_folder = environ.get(
     'CROSSCOMPUTE_INPUT_FOLDER', 'tests/integers/input')
 output_folder = environ.get(
     'CROSSCOMPUTE_OUTPUT_FOLDER', 'tests/integers/output')
 
+
+# Load input variables from input folder
 variables = json.load(open(join(input_folder, 'variables.json'), 'rt'))
+
+
+# Perform calculation
 c = variables['a'] + variables['b']
 
+
+# Save output variables to output folder
 json.dump({
     'c': c,
 }, open(join(output_folder, 'variables.json'), 'wt'))
@@ -56,10 +65,23 @@ json.dump({
 
 ```yaml
 ---
+# version of crosscompute
 crosscompute: 0.9.0
+
+# name of your report, tool, widget, dashboard, wizard
 name: Add Numbers
+
+# version of your report, tool, widget, dashboard, wizard
 version: 0.1.0
+
+# input configuration
 input:
+
+  # input variables
+  #   - id to use when referencing your variable in the template
+  #   - view to use when rendering your variable on the display
+  #   - path where your script loads the variable,
+  #     relative to the input folder
   variables:
     - id: a
       view: number
@@ -67,19 +89,40 @@ input:
     - id: b
       view: number
       path: variables.json
+
+# output configuration
 output:
+
+  # output variables
+  #   - id to use when referencing your variable in the template
+  #   - view to use when rendering your variable on the display
+  #   - path where your script saves the variable,
+  #     relative to the output folder
   variables:
     - id: c
       view: number
       path: variables.json
+
+# test configuration
+#   - folder where test is defined
 tests:
   - folder: tests/integers
   - folder: tests/floats
+
+# script configuration
 script:
+
+  # folder where script should run
   folder: .
-  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
-layout:
-  name: input output
+
+  # command to use to run your script
+  command: python run.py
+
+# display configuration
+display:
+
+  # layout to use when rendering your variables
+  layout: input output
 ```
 
 **Tool**
@@ -94,13 +137,12 @@ Configuration files tell CrossCompute how to render your variables and run your 
 
 ```yaml
 ---
-# Version of CrossCompute
 crosscompute: 0.9.0
-# Name of your report, tool, widget, dashboard, wizard
-name: Calculate Tip
-# Version of your report, tool, widget, dashboard, wizard
-version: 0.0.1
 ```
+
+## Examples
+
+For more examples, please see <https://github.com/crosscompute/crosscompute-examples>.
 
 ### Report
 
