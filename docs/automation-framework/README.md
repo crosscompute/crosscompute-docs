@@ -397,7 +397,7 @@ environment:
   memory: tiny
 display:
   style:
-	path: report.css
+    path: report.css
   header:
     path: header.md
   footer:
