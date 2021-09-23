@@ -7,9 +7,15 @@ The following components work together to form the CrossCompute Automation Syste
 - [Publishing Platform](docs/publishing-platform): Deploy your report, tool, widget, dashboard, wizard to thousands of concurrent users.
 - [Analytics Marketplace](docs/analytics-marketplace): Sell subscription access to your report, tool, widget, dashboard, wizard.
 
-To compile this documentation, run the following commands:
+To serve this documentation, run the following commands:
 
 ```bash
+# Install dependencies
 pip install mkdocs mkdocs-material pmdown-extensions
+
+# Launch development server
 mkdocs serve
+
+# Build production assets
+mkdocs build
 ```

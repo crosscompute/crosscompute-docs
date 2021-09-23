@@ -1,3 +1,5 @@
 # vim
 *.sw[op]
 *~
+# mkdocs
+site/
