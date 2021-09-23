@@ -25,7 +25,7 @@ crosscompute serve.yml
 
 ## Script
 
-CrossCompute will run your script as specified in your configuration file. The script can be a Python script, a Jupyter notebook or a Bash command -- in case your code is in another programming language such as R or Julia.
+CrossCompute will run your script as specified in your configuration file. The script can be a Python script, a Jupyter notebook or a Bash command &mdash; in case your code is in another programming language such as R or Julia.
 
 ```yaml
 # Python script
