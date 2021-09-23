@@ -627,7 +627,7 @@ name: Watch Machine
 version: 0.0.1
 
 # import configuration
-# - id to use when referencing this import in your template 
+# - id to use when referencing this import in your template
 # - path to the configuration file that you want to import
 imports:
   - id: cpu
