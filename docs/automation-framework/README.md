@@ -747,8 +747,9 @@ Would you like to exercise more?
 
 ```python
 def show_next(more_exercise):
-	if more_exercise == 'Yes':
-		return True
+    'Decide whether to show the next step'
+    if more_exercise == 'Yes':
+        return True
 ```
 
 ```markdown
@@ -759,7 +760,8 @@ Name a simple exercise you can do right now and do it.
 
 ```python
 def check(simple_exercise):
-	if simple_exercise.strip() == '':
+    'Check values from previous steps'
+    if simple_exercise.strip() == '':
         return False, {'simple_exercise': 'cannot be blank'}
 ```
 
