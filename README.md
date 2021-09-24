@@ -1,6 +1,6 @@
 # CrossCompute Analytics Automation System Documentation
 
-The following components work together to form the CrossCompute Automation System:
+The following components work together to form the CrossCompute Analytics Automation System:
 
 - [Automation Framework](docs/automation-framework): Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, wizards.
 - [Editing Platform](docs/editing-platform): Prototype your analytics collaboratively in JupyterLab with CrossCompute extensions.
