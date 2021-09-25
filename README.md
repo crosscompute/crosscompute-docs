@@ -11,7 +11,7 @@ To serve this documentation, run the following commands:
 
 ```bash
 # Install dependencies
-pip install mkdocs mkdocs-material pmdown-extensions
+pip install mkdocs mkdocs-material pygments pymdown-extensions -U
 
 # Launch development server
 mkdocs serve
