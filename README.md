@@ -1,11 +1,13 @@
 # CrossCompute Analytics Automation System Documentation
 
+Publish step-by-step wizards that generate web-based reports.
+
 The following components work together to form the CrossCompute Analytics Automation System:
 
-- [Automation Framework](docs/automation-framework): Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, wizards.
-- [Editing Platform](docs/editing-platform): Prototype your analytics collaboratively in JupyterLab with CrossCompute extensions.
-- [Publishing Platform](docs/publishing-platform): Deploy your report, tool, widget, dashboard, wizard to thousands of concurrent users.
-- [Analytics Marketplace](docs/analytics-marketplace): Sell subscription access to your report, tool, widget, dashboard, wizard.
+- [Automation Framework](docs/automation-framework): Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report using our open-source framework. Your code can be in any programming language.
+- [Editing Platform](docs/editing-platform): Edit your step-by-step wizard and web-based report directly in the browser.
+- [Publishing Platform](docs/publishing-platform): Deploy your own step-by-step wizard to generate a custom web-based report to thousands of concurrent users.
+- [Analytics Marketplace](docs/analytics-marketplace): Sell subscription access to your step-by-step wizard and web-based report.
 
 To serve this documentation, run the following commands:
 
