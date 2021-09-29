@@ -1,18 +1,12 @@
 # Automation Framework
 
-Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, wizards.
-
-- Reports are documents that update when the data changes.
-- Tools are forms that transform input variables into output variables.
-- Widgets are interactive visualizations that update when the data changes.
-- Dashboards are widgets in a layout.
-- Wizards are step-by-step questions that generate a specific web-based report.
+Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report.
 
 ## Quickstart
 
 ```bash
 # Update package
-pip install crosscompute -U
+pip install crosscompute --upgrade
 
 # Initialize configuration
 crosscompute
@@ -21,11 +15,16 @@ crosscompute
 crosscompute serve.yml
 ```
 
+Running `crosscompute` without any arguments will start a server if a configuration file exists. If a configuration does not exist, `crosscompute` will ask some questions and initialize a configuration file and recommended file structure.
+
 ## Script
 
-CrossCompute will run your script as specified in your configuration file. The script can be a Python script, a Jupyter notebook or a Bash command &mdash; in case your code is in another programming language such as R or Julia.
+CrossCompute will run your code as specified in your configuration file. Your code can be a Python function, a Python script, a Jupyter notebook or a Bash command. Your code can be in any programming language such as R or Julia.
 
 ```yaml
+# Python function
+function: run.plot
+
 # Python script
 command: python run.py
 
@@ -345,6 +344,8 @@ For more examples, please see <https://github.com/crosscompute/crosscompute-exam
 
 ### Report
 
+A report is a document that updates when the data changes.
+
 Here is an example of a report configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/reports/compute-logarithms> for the complete example.
 
 **Configuration (`serve.yml`)**
@@ -480,6 +481,8 @@ TODO: Screenshot
 
 ### Tool
 
+A tool is a form with code that transforms input variables into output variables.
+
 Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/tools/add-numbers-command-line> for the complete example.
 
 **Configuration (`serve.yml`)**
@@ -551,6 +554,8 @@ TODO: Screenshot
 
 ### Widget
 
+A widget is an interactive visualization that updates when the data changes.
+
 Here is an example of a widget configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/widgets/watch-cpu> for the complete example.
 
 **Configuration (`serve.yml`)**
@@ -611,6 +616,8 @@ TODO: Screenshot
 
 ### Dashboard
 
+A dashboard is a collection of widgets.
+
 Here is an example of a dashboard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/dashboards/watch-machine> for the complete example.
 
 **Configuration (`serve.yml`)**
@@ -663,6 +670,8 @@ display:
 TODO: Screenshot
 
 ### Wizard
+
+A wizard is a step-by-step series of questions.
 
 Here is an example of a wizard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/wizards/encourage-exercise> for the complete example.
 

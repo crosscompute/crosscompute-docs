@@ -2,18 +2,18 @@
 
 Publish step-by-step wizards that generate web-based reports.
 
-The following components work together to form the CrossCompute Analytics Automation System:
+The CrossCompute Analytics Automation System is made of these components:
 
-- [Automation Framework](docs/automation-framework): Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report using our open-source framework. Your code can be in any programming language.
+- [Automation Framework](docs/automation-framework): Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report using our open-source framework.
 - [Editing Platform](docs/editing-platform): Edit your step-by-step wizard and web-based report directly in the browser.
 - [Publishing Platform](docs/publishing-platform): Deploy your own step-by-step wizard to generate a custom web-based report to thousands of concurrent users.
 - [Analytics Marketplace](docs/analytics-marketplace): Sell subscription access to your step-by-step wizard and web-based report.
 
-To serve this documentation, run the following commands:
+To build this documentation, run the following commands:
 
 ```bash
 # Install dependencies
-pip install mkdocs mkdocs-material pygments pymdown-extensions -U
+pip install mkdocs mkdocs-material pygments pymdown-extensions --upgrade
 
 # Launch development server
 mkdocs serve
