@@ -48,7 +48,7 @@ You can use command-line arguments to specify the input, output, log, debug fold
 command: python x.py {input_folder} {output_folder} {log_folder} {debug_folder}
 ```
 
-Here is an example of a simple script that uses command-line arguments and a corresponding configuration file to define a web-based tool.
+Here is an example of a simple script that uses command-line arguments to define a web-based tool.
 
 **Script (`run.py`)**
 
@@ -150,7 +150,7 @@ CrossCompute will define the following environment variables before running your
 - ``CROSSCOMPUTE_LOG_FOLDER``: Your script can save log variables to this folder at the relative path specified in the configuration file. These log variables will be visible to the user.
 - ``CROSSCOMPUTE_DEBUG_FOLDER``: Your script can save debug variables to this folder at the relative path specified in the configuration file. These debug variables will not be visible to the user.
 
-Here is an example of a simple script that uses environment variables and a corresponding configuration file to define a web-based tool. Note that you will most likely use environment variables if your script is a Jupyter notebook.
+Here is an example of a simple script that uses environment variables to define a web-based tool. Note that you will most likely use environment variables if your script is a Jupyter notebook.
 
 **Script (`run.py`)**
 
