@@ -2,7 +2,7 @@
 
 Publish step-by-step wizards that generate web-based reports.
 
-The CrossCompute Analytics Automation System is made of these components:
+The following components work together to form the CrossCompute Analytics Automation System:
 
 - [Automation Framework](docs/automation-framework): Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report.
 - [Editing Platform](docs/editing-platform): Edit your step-by-step wizard and web-based report directly in the browser.

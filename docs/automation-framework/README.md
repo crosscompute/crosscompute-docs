@@ -15,7 +15,7 @@ crosscompute
 crosscompute serve.yml
 ```
 
-Running `crosscompute` without any arguments will start a server if a configuration file exists. If a configuration does not exist, `crosscompute` will ask some questions and initialize a configuration file and recommended file structure.
+Running `crosscompute` without any arguments will start a server if a configuration file exists. If a configuration does not exist, `crosscompute` will ask questions to initialize a configuration file and folder structure.
 
 ## Script
 
