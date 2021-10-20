@@ -257,6 +257,7 @@ name: { name of your resource }
 version: { version of your resource }
 imports:
   - id: { id to use when referencing this import in your template }
+    visibility: { visibility level -- root or index or search }
     # Specify either path or uri or name
     path: { path to the configuration file that you want to import }
     uri: { uri to the configuration file that you want to import }
