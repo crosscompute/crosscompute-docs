@@ -83,10 +83,10 @@ json.dump({
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Add Numbers
 
-# version of your resource
+# version of your automation
 version: 0.1.0
 
 # input configuration
@@ -137,7 +137,7 @@ script:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: input output
 ```
 
@@ -188,10 +188,10 @@ json.dump({
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Add Numbers
 
-# version of your resource
+# version of your automation
 version: 0.1.0
 
 # input configuration
@@ -242,7 +242,7 @@ script:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: input output
 ```
 
@@ -253,23 +253,24 @@ Configuration files tell CrossCompute how to render your variables and run your 
 ```yaml
 ---
 crosscompute: { version of crosscompute }
-name: { name of your resource }
-version: { version of your resource }
+name: { name of your automation }
+version: { version of your automation }
 imports:
   - id: { id to use when referencing this import in your template }
     visibility: { visibility level -- root or index or search }
     # Specify either path or uri or name
     path: { path to the configuration file that you want to import }
     uri: { uri to the configuration file that you want to import }
-    name: { name of the resource that you want to import }
+    name: { name of the automation that you want to import }
 peers:
-  - uri: { uri of a trusted peer with which you want to pool resources }
+  - uri: { uri of a trusted peer for imports and exports }
 input:
   variables:
     - id: { id to use when referencing this variable in your template }
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               input folder }
+      settings: { settings to configure the view }
   templates:
     - path: { path to your markdown template or jupyter notebook wizard }
 output:
@@ -278,6 +279,7 @@ output:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               output folder }
+      settings: { settings to configure the view }
   templates:
     - path: { path to your markdown template or jupyter notebook wizard }
 log:
@@ -329,11 +331,11 @@ display:
     path: { path to markdown template that defines the header }
   footer:
     path: { path to markdown template that defines the footer }
-  layout: { layout to use by default when rendering this resource }
-  format: { format to use by default when rendering this resource }
+  layout: { layout to use by default when rendering this automation }
+  format: { format to use by default when rendering this automation }
 payment:
   account: { account where the user should send payment when using this
-             resource }
+             automation }
   amount: { amount of payment that the user should send }
   currency: { currency of payment }
   policy: { policy to use for payment, either before or after }
@@ -356,10 +358,10 @@ Here is an example of a report configuration. See <https://github.com/crosscompu
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Compute Logarithms
 
-# version of your resource
+# version of your automation
 version: 0.0.1
 
 # input configuration
@@ -463,10 +465,10 @@ display:
     # path to markdown template that defines the footer
     path: footer.md
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: output
 
-  # format to use by default when rendering this resource
+  # format to use by default when rendering this automation
   format: pdf
 ```
 
@@ -493,10 +495,10 @@ Here is an example of a tool configuration. See <https://github.com/crosscompute
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Add Numbers
 
-# version of your resource
+# version of your automation
 version: 0.1.0
 
 # input configuration
@@ -547,7 +549,7 @@ script:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: input output
 ```
 
@@ -566,10 +568,10 @@ Here is an example of a widget configuration. See <https://github.com/crosscompu
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Watch CPU Usage
 
-# version of your resource
+# version of your automation
 version: 0.0.1
 
 # output configuration
@@ -609,7 +611,7 @@ script:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: output
 ```
 
@@ -628,10 +630,10 @@ Here is an example of a dashboard configuration. See <https://github.com/crossco
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Watch Machine
 
-# version of your resource
+# version of your automation
 version: 0.0.1
 
 # import configuration
@@ -654,7 +656,7 @@ output:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: output
 ```
 
@@ -683,10 +685,10 @@ Here is an example of a wizard configuration. See <https://github.com/crosscompu
 # version of crosscompute
 crosscompute: 0.9.0
 
-# name of your resource
+# name of your automation
 name: Encourage Exercise
 
-# version of your resource
+# version of your automation
 version: 0.0.1
 
 # input configuration
@@ -741,7 +743,7 @@ script:
 # display configuration
 display:
 
-  # layout to use by default when rendering this resource
+  # layout to use by default when rendering this automation
   layout: output
 ```
 
