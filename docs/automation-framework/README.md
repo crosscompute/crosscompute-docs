@@ -325,8 +325,9 @@ environment:
                either cpu or gpu }
   memory: { amount of memory you want to reserve to run your script }
 display:
-  style:
-    path: { path to CSS stylesheet that will be used to render your templates }
+  styles:
+    - uri: { uri to CSS stylesheet that will be used to render your templates }
+    - path: { path to CSS stylesheet that will be used to render your templates }
   header:
     path: { path to markdown template that defines the header }
   footer:
@@ -453,9 +454,11 @@ environment:
 # display configuration
 display:
 
-  style:
-    # path to CSS stylesheet that will be used to render your templates
-    path: report.css
+  # style configuration
+  # - uri to CSS stylesheet that will be used to render your templates
+  # - path to CSS stylesheet that will be used to render your templates
+  styles:
+    - path: report.css
 
   header:
     # path to markdown template that defines the header
