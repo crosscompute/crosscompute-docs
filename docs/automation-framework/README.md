@@ -1,6 +1,6 @@
 # Automation Framework
 
-Transform your Jupyter notebook or command-line script into a step-by-step wizard that generates a web-based report.
+Transform your Jupyter notebook or command-line script into a step-by-step form that generates a web-based report.
 
 ## Quickstart
 
@@ -272,7 +272,7 @@ input:
               input folder }
       settings: { settings to configure the view }
   templates:
-    - path: { path to your markdown template or jupyter notebook wizard }
+    - path: { path to your markdown template or jupyter notebook form }
 output:
   variables:
     - id: { id to use when referencing this variable in your template }
@@ -281,7 +281,7 @@ output:
               output folder }
       settings: { settings to configure the view }
   templates:
-    - path: { path to your markdown template or jupyter notebook wizard }
+    - path: { path to your markdown template or jupyter notebook form }
 log:
   variables:
     - id: { id to use when referencing this variable in your template }
@@ -289,7 +289,7 @@ log:
       path: { path where your script loads this variable, relative to the
               log folder }
   templates:
-    - path: { path to your markdown template or jupyter notebook wizard }
+    - path: { path to your markdown template or jupyter notebook form }
 debug:
   variables:
     - id: { id to use when referencing this variable in your template }
@@ -297,7 +297,7 @@ debug:
       path: { path where your script loads this variable, relative to the
               debug folder }
   templates:
-    - path: { path to your markdown template or jupyter notebook wizard }
+    - path: { path to your markdown template or jupyter notebook form }
 tests:
   - folder: { folder that contains an input subfolder with paths for
               input variables that define a specific test }
@@ -400,7 +400,7 @@ output:
       path: values.csv
 
   # output templates
-  #   - path to your markdown template or jupyter notebook wizard
+  #   - path to your markdown template or jupyter notebook form
   templates:
     - path: report.md
 
@@ -649,7 +649,7 @@ imports:
 output:
 
   # output templates
-  #   - path to your markdown template or jupyter notebook wizard
+  #   - path to your markdown template or jupyter notebook form
   templates:
     - path: dashboard.md
 
@@ -672,11 +672,11 @@ display:
 
 TODO: Screenshot
 
-### Wizard
+### Form
 
-A wizard is a step-by-step series of questions.
+A form is a step-by-step series of questions.
 
-Here is an example of a wizard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/wizards/encourage-exercise> for the complete example.
+Here is an example of a form configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/forms/encourage-exercise> for the complete example.
 
 **Configuration (`serve.yml`)**
 
@@ -708,7 +708,7 @@ input:
       path: variables.json
 
   # input templates
-  # - path to your markdown template or jupyter notebook wizard
+  # - path to your markdown template or jupyter notebook form
   templates:
     - path: ask.ipynb
 

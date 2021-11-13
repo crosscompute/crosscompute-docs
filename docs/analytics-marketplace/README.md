@@ -1,3 +1,3 @@
 # Analytics Marketplace
 
-Sell subscription access to your report, tool, widget, dashboard, wizard.
+Sell subscription access to your report, form, tool, widget, dashboard.
