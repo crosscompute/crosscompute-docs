@@ -288,6 +288,7 @@ log:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               log folder }
+      settings: { settings to configure the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 debug:
@@ -296,8 +297,12 @@ debug:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               debug folder }
+      settings: { settings to configure the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
+views:
+    - id: { id of the view that you want to configure }
+      settings: { settings to configure the view }
 tests:
   - folder: { folder that contains an input subfolder with paths for
               input variables that define a specific test }
