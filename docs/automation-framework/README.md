@@ -258,8 +258,9 @@ version: { version of your automation }
 imports:
   - id: { id to use when referencing this import in your template }
     visibility: { visibility level -- home or index or search }
-    # Specify either path or uri or name
+    # Specify either path or folder or uri or name
     path: { path to the configuration file that you want to import }
+    folder: { folder containing a configuration file that you want to import }
     uri: { uri to the configuration file that you want to import }
     name: { name of the automation that you want to import }
 peers:
