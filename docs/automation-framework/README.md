@@ -308,8 +308,12 @@ tests:
   - folder: { folder that contains an input subfolder with paths for
               input variables that define a specific test }
 batches:
-  - folder: { folder that contains an input subfolder with paths for
+  - name: { name of the batch; can include variable ids }
+    folder: { folder that contains an input subfolder with paths for
               input variables that define a specific batch }
+    variables:
+      - id: { id of the input variable that you want to batch }
+        path: { path containing different values for this variable }
 script:
   folder: { folder where your script should run }
   # Specify either command or function
