@@ -118,7 +118,7 @@ output:
       view: number
       path: variables.json
 
-# test configuration
+# tests configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific test
 tests:
@@ -223,7 +223,7 @@ output:
       view: number
       path: variables.json
 
-# test configuration
+# tests configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific test
 tests:
@@ -415,14 +415,14 @@ output:
   templates:
     - path: report.md
 
-# test configuration
+# tests configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific test
 tests:
   - folder: tests/base-e
   - folder: tests/base-10
 
-# batch configuration
+# batches configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific batch
 batches:
@@ -464,7 +464,7 @@ environment:
 # display configuration
 display:
 
-  # style configuration
+  # styles configuration
   # - uri to CSS stylesheet that will be used to render your templates
   # - path to CSS stylesheet that will be used to render your templates
   styles:
@@ -543,7 +543,7 @@ output:
       view: number
       path: variables.json
 
-# test configuration
+# tests configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific test
 tests:
@@ -600,7 +600,7 @@ output:
       view: number
       path: variables.json
 
-# test configuration
+# tests configuration
 #   - folder that contains an input subfolder with paths for
 #     input variables that define a specific test
 tests:
@@ -738,7 +738,7 @@ output:
       view: markdown
       path: summary.md
 
-# test configuration
+# tests configuration
 # - folder that contains an input subfolder with paths for
 #   input variables that define a specific test
 tests:
