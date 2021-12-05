@@ -138,7 +138,7 @@ script:
 display:
 
   # layout to use by default when rendering this automation
-  layout: input output
+  layout: input
 ```
 
 ### Environment Variables
@@ -243,7 +243,7 @@ script:
 display:
 
   # layout to use by default when rendering this automation
-  layout: input output
+  layout: input
 ```
 
 ## Configuration
@@ -271,7 +271,7 @@ input:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               input folder }
-      settings: { settings to configure the view }
+      configuration: { configuration of the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 output:
@@ -280,7 +280,7 @@ output:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               output folder }
-      settings: { settings to configure the view }
+      configuration: { configuration of the view}
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 log:
@@ -289,7 +289,7 @@ log:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               log folder }
-      settings: { settings to configure the view }
+      configuration: { configuration of the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 debug:
@@ -298,12 +298,12 @@ debug:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               debug folder }
-      settings: { settings to configure the view }
+      configuration: { configuration of the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 views:
     - id: { id of the view that you want to configure }
-      settings: { settings to configure the view }
+      configuration: { configuration of the view }
 tests:
   - folder: { folder that contains an input subfolder with paths for
               input variables that define a specific test }
@@ -311,9 +311,8 @@ batches:
   - name: { name of the batch; can include variable ids }
     folder: { folder that contains an input subfolder with paths for
               input variables that define a specific batch }
-    variables:
-      - id: { id of the input variable that you want to batch }
-        path: { path containing different values for this variable }
+    configuration:
+      path: { path containing different values for the input variables }
 script:
   folder: { folder where your script should run }
   # Specify either command or function
@@ -411,7 +410,7 @@ output:
       path: values.csv
 
   # output templates
-  #   - path to your markdown template or jupyter notebook form
+  # - path to your markdown template or jupyter notebook form
   templates:
     - path: report.md
 
@@ -499,7 +498,7 @@ TODO: Screenshot
 
 A tool is a form with code that transforms input variables into output variables.
 
-Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/tools/add-numbers-command-line> for the complete example.
+Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/tools/add-numbers> for the complete example.
 
 **Configuration (`serve.yml`)**
 
@@ -563,7 +562,7 @@ script:
 display:
 
   # layout to use by default when rendering this automation
-  layout: input output
+  layout: input
 ```
 
 TODO: Screenshot
@@ -662,7 +661,7 @@ imports:
 output:
 
   # output templates
-  #   - path to your markdown template or jupyter notebook form
+  # - path to your markdown template or jupyter notebook form
   templates:
     - path: dashboard.md
 
