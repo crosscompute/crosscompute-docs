@@ -11,8 +11,8 @@ pip install crosscompute --upgrade
 # Initialize configuration
 crosscompute
 
-# Serve analytics
-crosscompute serve.yml
+# Serve automation
+crosscompute automate.yml
 ```
 
 Running `crosscompute` without any arguments will start a server if a configuration file exists. If a configuration does not exist, `crosscompute` will ask questions to initialize a configuration file and folder structure.
@@ -76,7 +76,7 @@ json.dump({
 }, open(join(output_folder, 'variables.json'), 'wt'))
 ```
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -181,7 +181,7 @@ json.dump({
 }, open(join(output_folder, 'variables.json'), 'wt'))
 ```
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -427,7 +427,7 @@ A report is a document that updates when the data changes.
 
 Here is an example of a report configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/reports/compute-logarithms> for the complete example.
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -566,7 +566,7 @@ A tool is a form with code that transforms input variables into output variables
 
 Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/tools/add-numbers> for the complete example.
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -639,7 +639,7 @@ A widget is an interactive visualization that updates when the data changes.
 
 Here is an example of a widget configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/widgets/watch-cpu> for the complete example.
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -701,7 +701,7 @@ A dashboard is a collection of widgets.
 
 Here is an example of a dashboard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/dashboards/watch-machine> for the complete example.
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
@@ -719,9 +719,9 @@ version: 0.0.1
 # - path to the configuration file that you want to import
 imports:
   - id: cpu
-    path: ../../widgets/watch-cpu/serve.yml
+    path: ../../widgets/watch-cpu/automate.yml
   - id: ram
-    path: ../../widgets/watch-ram/serve.yml
+    path: ../../widgets/watch-ram/automate.yml
 
 # output configuration
 output:
@@ -756,7 +756,7 @@ A form is a step-by-step series of questions.
 
 Here is an example of a form configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/forms/encourage-exercise> for the complete example.
 
-**Configuration (`serve.yml`)**
+**Configuration (`automate.yml`)**
 
 ```yaml
 ---
