@@ -1,6 +1,6 @@
 # Automation Framework
 
-Transform your Jupyter notebook or command-line script into a step-by-step form that generates a web-based report.
+Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, forms.
 
 ## Quickstart
 
