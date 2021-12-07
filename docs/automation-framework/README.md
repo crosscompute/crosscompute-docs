@@ -250,6 +250,60 @@ display:
 
 Configuration files tell CrossCompute how to render your variables and run your script.
 
+### Current
+
+Here are the options supported in the current release:
+
+```yaml
+---
+crosscompute: 0.9.0
+name: { name of your automation }
+slug: { slug for automation URI }
+version: { version of your automation }
+imports:
+  - id: { id to use when referencing this import in your template }
+    path: { path to the configuration file that you want to import }
+input:
+  variables:
+    - id: { id to use when referencing this variable in your template }
+      view: { view to use when rendering this variable on the display }
+      path: { path where your script loads this variable, relative to the
+              input folder }
+      configuration: { configuration of the view }
+  templates:
+    - path: { path to your markdown template or jupyter notebook form }
+output:
+  variables:
+    - id: { id to use when referencing this variable in your template }
+      view: { view to use when rendering this variable on the display }
+      path: { path where your script loads this variable, relative to the
+              output folder }
+      configuration: { configuration of the view }
+  templates:
+    - path: { path to your markdown template or jupyter notebook form }
+tests:
+  - folder: { folder that contains an input subfolder with paths for
+              input variables that define a specific test }
+batches:
+  - name: { name of the batch; can include variable ids and filters }
+    slug: { slug for batch URI; can include variable ids and filters }
+    folder: { folder that contains an input subfolder with paths to
+              input variables; can include variable ids and filters }
+    configuration:
+      path: { path containing different values for the input variables }
+script:
+  folder: { folder where your script should run }
+  command: { command to use to run your script, relative to the script folder }
+display:
+  styles:
+    - uri: { uri to CSS stylesheet that will style your templates }
+    - path: { path to CSS stylesheet that will style your templates }
+```
+
+### Future
+
+Here is the complete specification, including options that are not yet implemented in the current release.
+
 ```yaml
 ---
 crosscompute: { version of crosscompute }
@@ -280,7 +334,7 @@ output:
       view: { view to use when rendering this variable on the display }
       path: { path where your script loads this variable, relative to the
               output folder }
-      configuration: { configuration of the view}
+      configuration: { configuration of the view }
   templates:
     - path: { path to your markdown template or jupyter notebook form }
 log:
@@ -304,15 +358,27 @@ debug:
 views:
     - id: { id of the view that you want to configure }
       configuration: { configuration of the view }
+      folder: { folder containing the view class }
+      # Specify either package or uri or class
+      package: { package containing the view on PyPI }
+      uri: { uri containing the view remotely }
+      class: { class containing the view locally, specified using
+               module.class syntax, relative to the view folder }
 tests:
   - folder: { folder that contains an input subfolder with paths for
               input variables that define a specific test }
 batches:
-  - name: { name of the batch; can include variable ids }
-    folder: { folder that contains an input subfolder with paths for
-              input variables that define a specific batch }
+  - name: { name of the batch; can include variable ids and filters }
+    slug: { slug for batch URI; can include variable ids and filters }
+    folder: { folder that contains an input subfolder with paths to
+              input variables; can include variable ids and filters }
     configuration:
       path: { path containing different values for the input variables }
+setup:
+  folder: { folder where your setup should run }
+  dependencies:
+    - package: { package on PyPI }
+  command: { command to use to setup your script, relative to the setup folder }
 script:
   folder: { folder where your script should run }
   # Specify either command or function
@@ -335,8 +401,8 @@ environment:
   memory: { amount of memory you want to reserve to run your script }
 display:
   styles:
-    - uri: { uri to CSS stylesheet that will be used to render your templates }
-    - path: { path to CSS stylesheet that will be used to render your templates }
+    - uri: { uri to CSS stylesheet that will style your templates }
+    - path: { path to CSS stylesheet that will style your templates }
   header:
     path: { path to markdown template that defines the header }
   footer:
