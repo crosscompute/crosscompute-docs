@@ -6,7 +6,7 @@ Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets
 
 ```bash
 # Update package
-pip install crosscompute --upgrade
+pip install crosscompute>=0.9.0 --upgrade
 
 # Initialize configuration
 crosscompute
