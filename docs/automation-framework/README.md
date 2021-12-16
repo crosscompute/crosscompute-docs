@@ -400,6 +400,14 @@ environment:
                either cpu or gpu }
   memory: { amount of memory you want to reserve to run your script }
 display:
+  base:
+    path: { path to jinja2 template that defines the base }
+  head:
+    path: { path to html template that defines the head }
+  links:
+    - rel: { value for link rel }
+      href: { value for link href }
+      crossorigin: { value for link crossorigin }
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
     - path: { path to CSS stylesheet that will style your templates }
