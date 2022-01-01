@@ -393,8 +393,7 @@ repository:
   folder: { folder that contains this configuration file }
 environment:
   variables:
-    - id: { id of the environment variable that you want to make available
-            to your script }
+    - id: { id of the environment variable to make available to your script }
   image: { image of the container that you want to use to run your script }
   processor: { type of the processor you want to use to run your script,
                either cpu or gpu }
