@@ -63,7 +63,7 @@ input_folder, output_folder = argv[1:]
 
 
 # Load input variables from input folder
-variables = json.load(open(join(input_folder, 'variables.json'), 'rt'))
+variables = json.load(open(join(input_folder, 'variables.dictionary'), 'rt'))
 
 
 # Perform calculation
@@ -73,7 +73,7 @@ c = variables['a'] + variables['b']
 # Save output variables to output folder
 json.dump({
     'c': c,
-}, open(join(output_folder, 'variables.json'), 'wt'))
+}, open(join(output_folder, 'variables.dictionary'), 'wt'))
 ```
 
 **Configuration (`automate.yml`)**
@@ -100,10 +100,10 @@ input:
   variables:
     - id: a
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: b
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # output configuration
 output:
@@ -116,7 +116,7 @@ output:
   variables:
     - id: c
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # tests configuration
 # - folder that contains an input subfolder with paths for
@@ -168,7 +168,7 @@ output_folder = environ.get(
 
 
 # Load input variables from input folder
-variables = json.load(open(join(input_folder, 'variables.json'), 'rt'))
+variables = json.load(open(join(input_folder, 'variables.dictionary'), 'rt'))
 
 
 # Perform calculation
@@ -178,7 +178,7 @@ c = variables['a'] + variables['b']
 # Save output variables to output folder
 json.dump({
     'c': c,
-}, open(join(output_folder, 'variables.json'), 'wt'))
+}, open(join(output_folder, 'variables.dictionary'), 'wt'))
 ```
 
 **Configuration (`automate.yml`)**
@@ -205,10 +205,10 @@ input:
   variables:
     - id: a
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: b
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # output configuration
 output:
@@ -221,7 +221,7 @@ output:
   variables:
     - id: c
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # tests configuration
 # - folder that contains an input subfolder with paths for
@@ -458,16 +458,16 @@ input:
   variables:
     - id: base
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: start
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: stop
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: step
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # output configuration
 output:
@@ -597,10 +597,10 @@ input:
   variables:
     - id: a
       view: number
-      path: variables.json
+      path: variables.dictionary
     - id: b
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # output configuration
 output:
@@ -613,7 +613,7 @@ output:
   variables:
     - id: c
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # tests configuration
 # - folder that contains an input subfolder with paths for
@@ -670,7 +670,7 @@ output:
   variables:
     - id: cpu-usage
       view: number
-      path: variables.json
+      path: variables.dictionary
 
 # tests configuration
 #   - folder that contains an input subfolder with paths for
@@ -787,10 +787,10 @@ input:
   variables:
     - id: more_exercise
       view: boolean
-      path: variables.json
+      path: variables.dictionary
     - id: simple_exercise
       view: string
-      path: variables.json
+      path: variables.dictionary
 
   # input templates
   # - path to your markdown template or jupyter notebook form
