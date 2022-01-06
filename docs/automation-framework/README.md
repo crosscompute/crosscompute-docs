@@ -133,12 +133,6 @@ script:
 
   # command to use to run your script
   command: python run.py {input_folder} {output_folder}
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: input
 ```
 
 ### Environment Variables
@@ -238,12 +232,6 @@ script:
 
   # command to use to run your script
   command: python run.py
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: input
 ```
 
 ## Configuration
@@ -398,22 +386,12 @@ environment:
                either cpu or gpu }
   memory: { amount of memory you want to reserve to run your script }
 display:
-  base:
-    path: { path to jinja2 template that defines the base }
-  head:
-    path: { path to html template that defines the head }
-  links:
-    - rel: { value for link rel }
-      href: { value for link href }
-      crossorigin: { value for link crossorigin }
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
     - path: { path to CSS stylesheet that will style your templates }
-  header:
-    path: { path to markdown template that defines the header }
-  footer:
-    path: { path to markdown template that defines the footer }
-  layout: { layout to use by default when rendering this automation }
+  templates:
+    - name: { name of your jinja2 template }
+      path: { path to your jinja2 template }
   format: { format to use by default when rendering this automation }
 payment:
   account: { account where the user should send payment when using this
@@ -540,20 +518,6 @@ display:
   # - path to CSS stylesheet that will be used to render your templates
   styles:
     - path: report.css
-
-  header:
-    # path to markdown template that defines the header
-    path: header.md
-
-  footer:
-    # path to markdown template that defines the footer
-    path: footer.md
-
-  # layout to use by default when rendering this automation
-  layout: output
-
-  # format to use by default when rendering this automation
-  format: pdf
 ```
 
 **Template (`report.md`)**
@@ -629,12 +593,6 @@ script:
 
   # command to use to run your script
   command: python run.py {input_folder} {output_folder}
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: input
 ```
 
 TODO: Screenshot
@@ -691,12 +649,6 @@ script:
   # crontab syntax -- second-of-minute minute-of-hour
   # hour-of-day day-of-month month-of-year day-of-week
   schedule: '* * * * * *'
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: output
 ```
 
 TODO: Screenshot
@@ -736,12 +688,6 @@ output:
   # - path to your markdown template or jupyter notebook form
   templates:
     - path: dashboard.md
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: output
 ```
 
 **Template (`dashboard.md`)**
@@ -823,12 +769,6 @@ script:
 
   # command to use to run your script
   command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
-
-# display configuration
-display:
-
-  # layout to use by default when rendering this automation
-  layout: output
 ```
 
 **Template (`ask.ipynb`)**
