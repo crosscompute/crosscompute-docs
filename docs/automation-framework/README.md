@@ -392,7 +392,8 @@ display:
   templates:
     - name: { name of your jinja2 template }
       path: { path to your jinja2 template }
-  format: { format to use by default when rendering this automation }
+  layout: { layout to use when no templates are defined }
+  format: { format to use when rendering this automation }
 payment:
   account: { account where the user should send payment when using this
              automation }
