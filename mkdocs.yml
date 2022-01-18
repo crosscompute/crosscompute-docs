@@ -2,7 +2,12 @@ site_name: CrossCompute Docs
 theme: material
 nav:
   - Automation System: README.md
-  - Automation Framework: automation-framework/README.md
+  - Automation Framework:
+    - Quickstart: automation-framework/README.md
+    - Writing Your Script: automation-framework/script.md
+    - Configuring the Automation: automation-framework/configuration.md
+    - Examples: automation-framework/examples.md
+    - Views: automation-framework/views/README.md
   - Editing Platform: editing-platform/README.md
   - Publishing Platform: publishing-platform/README.md
   - Analytics Marketplace: analytics-marketplace/README.md
