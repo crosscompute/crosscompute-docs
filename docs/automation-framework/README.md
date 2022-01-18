@@ -2,7 +2,11 @@
 
 Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, forms.
 
+CrossCompute is designed to be decoupled, meaning that your notebook or script should know as little about CrossCompute as possible. All of the information that CrossCompute needs to know to run your script and render your variables is in a configuration file.
+
 ## Quickstart
+
+You can use our self-contained server to prototype automations on your local machine.
 
 ```bash
 # Update package
@@ -368,8 +372,9 @@ setup:
   command: { command to use to setup your script, relative to the setup folder }
 script:
   folder: { folder where your script should run }
-  # Specify either command or function
+  # Specify either command or path or function
   command: { command to use to run your script, relative to the script folder }
+  path: { path of your script, relative to the script folder }
   function: { function to use to run your script, specified using
               module.function syntax, relative to the script folder }
   schedule: { schedule to use to run your script, specified using extended
@@ -802,6 +807,6 @@ def check(simple_exercise):
         return False, {'simple_exercise': 'cannot be blank'}
 ```
 
-## Plugins
+## Views
 
-TODO: Add instructions on how to make a view plugin
+- [Link](views/link)
