@@ -4,7 +4,7 @@ For more examples, please see <https://github.com/crosscompute/crosscompute-exam
 
 A report is a document that updates when the data changes.
 
-Here is an example of a report configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/reports/compute-logarithms> for the complete example.
+Here is an example of a report configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/master/reports/compute-logarithms> for the complete example.
 
 **Configuration (`automate.yml`)**
 
@@ -129,7 +129,7 @@ TODO: Screenshot
 
 A tool is a form with code that transforms input variables into output variables.
 
-Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/tools/add-numbers> for the complete example.
+Here is an example of a tool configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/master/tools/add-numbers> for the complete example.
 
 **Configuration (`automate.yml`)**
 
@@ -196,7 +196,7 @@ TODO: Screenshot
 
 A widget is an interactive visualization that updates when the data changes.
 
-Here is an example of a widget configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/widgets/watch-cpu> for the complete example.
+Here is an example of a widget configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/master/widgets/watch-cpu> for the complete example.
 
 **Configuration (`automate.yml`)**
 
@@ -252,7 +252,7 @@ TODO: Screenshot
 
 A dashboard is a collection of widgets.
 
-Here is an example of a dashboard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/dashboards/watch-machine> for the complete example.
+Here is an example of a dashboard configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/watch-machine> for the complete example.
 
 **Configuration (`automate.yml`)**
 
@@ -301,7 +301,7 @@ TODO: Screenshot
 
 A form is a step-by-step series of questions.
 
-Here is an example of a form configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/0.9/forms/encourage-exercise> for the complete example.
+Here is an example of a form configuration. See <https://github.com/crosscompute/crosscompute-examples/tree/master/forms/encourage-exercise> for the complete example.
 
 **Configuration (`automate.yml`)**
 
