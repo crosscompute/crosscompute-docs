@@ -153,8 +153,8 @@ display:
     - uri: { uri to CSS stylesheet that will style your templates }
     - path: { path to CSS stylesheet that will style your templates }
   templates:
-    - name: { name of your jinja2 template }
-      path: { path to your jinja2 template }
+    - name: { name of your template }
+      path: { path to your template }
   layout: { layout to use when no templates are defined }
   format: { format to use when rendering this automation }
 payment:
