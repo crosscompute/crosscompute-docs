@@ -121,6 +121,12 @@ batches:
     slug: { slug for batch URI; can include variable ids and filters }
     folder: { folder that contains an input subfolder with paths to
               input variables; can include variable ids and filters }
+    reference:
+      folder: { folder that contains an input subfolder to use as a reference
+                for omitted variables }
+    variables:
+      - id: { id of a variable that you want to vary }
+        code: { code to generate values for this variable }
     configuration:
       path: { path containing different values for the input variables }
 setup:
