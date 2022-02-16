@@ -138,7 +138,7 @@ script:
   folder: { folder where your script should run }
   # Specify either command or path or function
   command: { command to use to run your script, relative to the script folder }
-  path: { path of your script, relative to the script folder }
+  path: { path to your script, relative to the script folder }
   function: { function to use to run your script, specified using
               module.function syntax, relative to the script folder }
   schedule: { schedule to use to run your script, specified using extended
