@@ -1,20 +1,17 @@
-CrossCompute will run your code as specified in your configuration file. Your code can be a Python function, a Python script, a Jupyter notebook or a Bash command. Your code can be in any programming language such as R or Julia.
+CrossCompute will run your code as specified in your configuration file. Your code can be a Python script, a Jupyter notebook or a Bash command. Your code can be in any programming language such as R or Julia.
 
 ```yaml
-# Python function
-function: run.plot
-
 # Python script
-command: python run.py
+path: run.py
 
 # Jupyter notebook
-command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+path: run.ipynb
 
 # Bash command
 command: julia run.jl
 ```
 
-CrossCompute needs a way to tell your script where to load input variables and where to save output variables. You have two options for configuring your script:
+CrossCompute needs a way to tell your scripts where to load input variables and where to save output variables. You have two options for configuring your scripts:
 
 - Option 1: Use command-line arguments
 - Option 2: Use environment variables
@@ -104,19 +101,17 @@ tests:
   - folder: tests/integers
   - folder: tests/floats
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # command to use to run your script
-  command: python run.py {input_folder} {output_folder}
+# scripts configuration
+# - command to use to run your script, if path is not specified
+# - folder where your script should run
+scripts:
+  - command: python run.py {input_folder} {output_folder}
+    folder: .
 ```
 
 ### Environment Variables
 
-CrossCompute will define the following environment variables before running your script:
+CrossCompute will define the following environment variables before running your scripts:
 
 - ``CROSSCOMPUTE_INPUT_FOLDER``: Your script should expect to find input variables saved to this folder at the relative path specified in the configuration file.
 - ``CROSSCOMPUTE_OUTPUT_FOLDER``: Your script should save output variables to this folder at the relative path specified in the configuration file.
@@ -203,13 +198,11 @@ tests:
   - folder: tests/integers
   - folder: tests/floats
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # command to use to run your script
-  command: python run.py
+# scripts configuration
+# - path to your script, relative to the script folder
+# - command to use to run your script, if path is not specified
+# - folder where your script should run
+scripts:
+  - path: run.py
+    folder: .
 ```
-

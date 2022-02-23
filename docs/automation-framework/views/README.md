@@ -1,2 +1,1 @@
 - [Link](link)
-- [String](string)

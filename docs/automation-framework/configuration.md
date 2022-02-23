@@ -39,11 +39,15 @@ batches:
     slug: { slug for batch URI; can include variable ids and filters }
     folder: { folder that contains an input subfolder with paths to
               input variables; can include variable ids and filters }
+    reference:
+      folder: { folder that contains an input subfolder to use as a reference
+                for omitted variables }
     configuration:
       path: { path containing different values for the input variables }
-script:
-  folder: { folder where your script should run }
-  command: { command to use to run your script, relative to the script folder }
+scripts:
+  - path: { path to your script, relative to the script folder }
+    command: { command to run your script, if path is not specified }
+    folder: { folder where your script should run }
 display:
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
@@ -134,16 +138,15 @@ setup:
   dependencies:
     - package: { package on PyPI }
   command: { command to use to setup your script, relative to the setup folder }
-script:
-  folder: { folder where your script should run }
-  # Specify either command or path or function
-  command: { command to use to run your script, relative to the script folder }
-  path: { path to your script, relative to the script folder }
-  function: { function to use to run your script, specified using
-              module.function syntax, relative to the script folder }
-  schedule: { schedule to use to run your script, specified using extended
-              crontab syntax -- second-of-minute minute-of-hour
-              hour-of-day day-of-month month-of-year day-of-week }
+scripts:
+  - path: { path to your script, relative to the script folder }
+    command: { command to run your script, if path is not specified }
+    function: { function to use to run your script, if path or command is not
+                specified }
+    folder: { folder where your script should run }
+    schedule: { schedule to use to run your script, specified using extended
+                crontab syntax -- second-of-minute minute-of-hour
+                hour-of-day day-of-month month-of-year day-of-week }
 repository:
   uri: { uri of repository that contains your script }
   folder: { folder that contains this configuration file }

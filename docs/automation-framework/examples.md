@@ -74,14 +74,13 @@ batches:
   - folder: batches/base-e
   - folder: batches/base-10
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # command to use to run your script
-  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+# scripts configuration
+# - path to your script, relative to the script folder
+# - command to use to run your script, if path is not specified
+# - folder where your script should run
+scripts:
+  - path: run.ipynb
+    folder: .
 
 # repository configuration
 repository:
@@ -180,14 +179,12 @@ tests:
   - folder: tests/integers
   - folder: tests/floats
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # command to use to run your script
-  command: python run.py {input_folder} {output_folder}
+# scripts configuration
+# - command to use to run your script
+# - folder where your script should run
+scripts:
+  - command: python run.py {input_folder} {output_folder}
+    folder: .
 ```
 
 TODO: Screenshot
@@ -230,20 +227,16 @@ output:
 tests:
   - folder: tests/standard
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # function to use to run your script, specified using
-  # module.function syntax, relative to the script folder
-  function: run.plot
-
-  # schedule to use to run your script, specified using extended
-  # crontab syntax -- second-of-minute minute-of-hour
-  # hour-of-day day-of-month month-of-year day-of-week
-  schedule: '* * * * * *'
+# scripts configuration
+# - path to your script, relative to the script folder
+# - command to use to run your script, if path is not specified
+# - function to use to run your script, if path or command is not specified
+# - folder where your script should run
+# - schedule to use to run your script, specified using extended crontab syntax
+scripts:
+  - function: run.plot
+    folder: .
+    schedule: '* * * * * *'
 ```
 
 TODO: Screenshot
@@ -356,14 +349,12 @@ output:
 tests:
   - folder: tests/standard
 
-# script configuration
-script:
-
-  # folder where your script should run
-  folder: .
-
-  # command to use to run your script
-  command: python -c "$(jupyter nbconvert run.ipynb --to script --stdout)"
+# scripts configuration
+# - path to your script, relative to the script folder
+# - folder where your script should run
+scripts:
+  - path: run.ipynb
+    folder: .
 ```
 
 **Template (`ask.ipynb`)**
