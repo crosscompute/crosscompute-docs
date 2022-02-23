@@ -76,7 +76,6 @@ batches:
 
 # scripts configuration
 # - path to your script, relative to the script folder
-# - command to use to run your script, if path is not specified
 # - folder where your script should run
 scripts:
   - path: run.ipynb
