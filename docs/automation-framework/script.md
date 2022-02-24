@@ -57,7 +57,7 @@ json.dump({
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.0
+crosscompute: 0.9.1
 
 # name of your automation
 name: Add Numbers
@@ -154,7 +154,7 @@ json.dump({
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.0
+crosscompute: 0.9.1
 
 # name of your automation
 name: Add Numbers

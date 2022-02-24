@@ -6,7 +6,7 @@ Here are the options supported in the current release:
 
 ```yaml
 ---
-crosscompute: 0.9.0
+crosscompute: 0.9.1
 name: { name of your automation }
 slug: { slug for automation URI }
 version: { version of your automation }
