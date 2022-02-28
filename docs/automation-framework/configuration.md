@@ -133,11 +133,15 @@ batches:
         code: { code to generate values for this variable }
     configuration:
       path: { path containing different values for the input variables }
-setup:
-  folder: { folder where your setup should run }
-  dependencies:
-    - package: { package on PyPI }
-  command: { command to use to setup your script, relative to the setup folder }
+datasets:
+  - path: { path to your dataset }
+    reference:
+      path: { path to reference dataset if expected path does not exist }
+setups:
+  - folder: { folder where your setup should run }
+    dependencies:
+      - package: { package on PyPI }
+    command: { command to use to setup your script, relative to the setup folder }
 scripts:
   - path: { path to your script, relative to the script folder }
     command: { command to run your script, if path is not specified }
