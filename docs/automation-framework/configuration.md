@@ -167,6 +167,14 @@ scripts:
     command: python run2.py {input_folder} {output_folder} {log_folder} {debug_folder}
     folder: .
 
+# environment configuration
+environment:
+
+  # environment variables
+  # - id of the environment variable to make available to your script
+  variables:
+    - id: GOOGLE_KEY
+
 # display configuration
 display:
 
