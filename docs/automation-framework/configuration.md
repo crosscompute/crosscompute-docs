@@ -155,6 +155,14 @@ batches:
     configuration:
       path: datasets/batches.csv
 
+# datasets configuration
+# - path of a dataset expected by your script
+# - reference dataset if expected path does not exist
+datasets:
+  - path: datasets/abc.csv
+    reference:
+      path: datasets/abc-2022.csv
+
 # scripts configuration
 # - path to your script, relative to the script folder
 # - command to run your script, if path is not specified
