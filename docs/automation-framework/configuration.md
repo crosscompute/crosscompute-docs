@@ -197,6 +197,10 @@ display:
   # - id of template
   # - path to template
   templates:
+    - path: base.jinja2
+      id: base
+    - path: live.jinja2
+      id: live
     - id: root
       path: root.jinja2
 ```
