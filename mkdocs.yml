@@ -15,3 +15,7 @@ nav:
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+extra:
+  analytics:
+    provider: google
+    property: G-QGQ4JL15LT
