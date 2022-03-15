@@ -320,7 +320,12 @@ display:
     - id: { id of your template }
       path: { path to your template }
   layout: { layout to use when no templates are defined }
-  format: { format to use when rendering this automation }
+print:
+  templates:
+    - id: { id of your template }
+      path: { path to your template }
+  page-number: { page number settings }
+  format: { format to use when printing this automation }
 payment:
   account: { account where the user should send payment when using this
              automation }
