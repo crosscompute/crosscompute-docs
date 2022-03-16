@@ -203,6 +203,19 @@ display:
       id: live
     - id: root
       path: root.jinja2
+
+# print configuration
+# - page-number settings
+print:
+  header-footer:
+    font-family: sans-serif
+    font-size: 8pt
+    color: '#808080'
+    padding: 0.1in 0.25in
+    skip-first: true
+  page-number:
+    location: footer
+    alignment: right
 ```
 
 ### Future
@@ -324,6 +337,7 @@ print:
   templates:
     - id: { id of your template }
       path: { path to your template }
+  header-footer: { header footer settings }
   page-number: { page number settings }
   format: { format to use when printing this automation }
 payment:
