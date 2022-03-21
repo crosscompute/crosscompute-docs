@@ -204,19 +204,21 @@ display:
     - id: root
       path: root.jinja2
 
-# print configuration
-# - page-number settings
-print:
-  configuration:
-    header-footer:
-        font-family: sans-serif
-        font-size: 8pt
-        color: '#808080'
-        padding: 0.1in 0.25in
-        skip-first: true
-    page-number:
-        location: footer
-        alignment: right
+# prints configuration
+prints:
+  - format: pdf
+    configuration:
+      header-footer:
+          font-family: sans-serif
+          font-size: 8pt
+          color: '#808080'
+          padding: 0.1in 0.25in
+          skip-first: true
+      page-number:
+          location: footer
+          alignment: right
+    folder: ~/Documents/attachments/automation-x-{timestamp}
+    name: '{y2 | slug}-{y3}.pdf'
 ```
 
 ### Future
@@ -334,14 +336,16 @@ display:
     - id: { id of your template }
       path: { path to your template }
   layout: { layout to use when no templates are defined }
-print:
-  format: { format to use when printing this automation }
-  configuration:
-    header-footer: { header footer settings }
-    page-number: { page number settings }
-  templates:
-    - id: { id of your template }
-      path: { path to your template }
+prints:
+  - format: { format to use when printing this automation }
+    configuration:
+      header-footer: { header footer settings }
+      page-number: { page number settings }
+    templates:
+      - id: { id of your template }
+        path: { path to your template }
+    folder: { folder to use when printing this automation }
+    name: { name to use when printing this automation }
 payment:
   account: { account where the user should send payment when using this
              automation }
