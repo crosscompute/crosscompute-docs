@@ -183,6 +183,9 @@ environment:
   variables:
     - id: GOOGLE_KEY
 
+  # batch concurrency, either process, thread or single
+  batch: process
+
 # display configuration
 display:
 
@@ -325,9 +328,11 @@ environment:
   variables:
     - id: { id of the environment variable to make available to your script }
   image: { image of the container that you want to use to run your script }
-  processor: { type of the processor you want to use to run your script,
+  processor: { processor type you want to use to run your script,
                either cpu or gpu }
-  memory: { amount of memory you want to reserve to run your script }
+  memory: { memory amount you want to reserve to run your script }
+  batch: { batch concurrency, either process, thread or single }
+
 display:
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
