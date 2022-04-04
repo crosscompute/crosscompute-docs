@@ -25,6 +25,6 @@ output:
       view: link
       path: a.csv
       configuration:
-        text: places
-        name: places.csv
+        link-text: places
+        file-name: places.csv
 ```
