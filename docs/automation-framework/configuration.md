@@ -45,6 +45,8 @@ input:
     - id: x2
       view: number
       path: variables.dictionary
+      configuration:
+        label: xx
     - id: x3
       view: password
       path: ENVIRONMENT
@@ -207,6 +209,17 @@ display:
     - id: root
       path: root.jinja2
 
+  # pages configuration
+  # - id of the page (required)
+  # - configuration of the page
+  pages:
+    - id: automation
+      configuration:
+        design: output
+    - id: output
+      configuration:
+        design: none
+
 # prints configuration
 prints:
   - format: pdf
@@ -340,7 +353,10 @@ display:
   templates:
     - id: { id of your template }
       path: { path to your template }
-  layout: { layout to use when no templates are defined }
+  pages:
+    - id: { id of the page }
+      configuration:
+        design: { design of the page }
 prints:
   - format: { format to use when printing this automation }
     configuration:
