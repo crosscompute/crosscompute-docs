@@ -14,7 +14,7 @@ python3.9 -m venv ~/.virtualenvs/crosscompute
 source ~/.virtualenvs/crosscompute/bin/activate
 
 # Update package
-pip install crosscompute>=0.9.1 crosscompute-views-map>=0.0.2 --upgrade
+pip install crosscompute>=0.9.2 crosscompute-views-map>=0.0.2 --upgrade
 
 # Initialize configuration
 crosscompute

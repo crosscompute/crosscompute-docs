@@ -11,7 +11,7 @@ Here is an example of a report configuration. See <https://github.com/crosscompu
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.1
+crosscompute: 0.9.2
 
 # name of your automation
 name: Compute Logarithms
@@ -134,7 +134,7 @@ Here is an example of a tool configuration. See <https://github.com/crosscompute
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.1
+crosscompute: 0.9.2
 
 # name of your automation
 name: Add Numbers
@@ -199,7 +199,7 @@ Here is an example of a widget configuration. See <https://github.com/crosscompu
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.1
+crosscompute: 0.9.2
 
 # name of your automation
 name: Watch CPU Usage
@@ -251,7 +251,7 @@ Here is an example of a dashboard configuration. See <https://github.com/crossco
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.1
+crosscompute: 0.9.2
 
 # name of your automation
 name: Watch Machine
@@ -300,7 +300,7 @@ Here is an example of a form configuration. See <https://github.com/crosscompute
 ```yaml
 ---
 # version of crosscompute
-crosscompute: 0.9.1
+crosscompute: 0.9.2
 
 # name of your automation
 name: Encourage Exercise
