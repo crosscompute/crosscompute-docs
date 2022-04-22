@@ -345,7 +345,6 @@ environment:
                either cpu or gpu }
   memory: { memory amount you want to reserve to run your script }
   batch: { batch concurrency, either process, thread or single }
-
 display:
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
@@ -357,6 +356,15 @@ display:
     - id: { id of the page }
       configuration:
         design: { design of the page }
+authorization:
+  groups:
+    - id: { id of authorization group }
+      expression: { expression containing variable ids }
+  permissions:
+    - id: { id of permission }
+      rules:
+        - group: { group id }
+          action: { accept, match, reject, drop }
 prints:
   - format: { format to use when printing this automation }
     configuration:
