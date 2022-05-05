@@ -188,6 +188,9 @@ environment:
   # batch concurrency, either process, thread or single
   batch: process
 
+  # interval to wait before running your scripts again
+  interval: 30 minutes
+
 # display configuration
 display:
 
@@ -331,9 +334,6 @@ scripts:
     function: { function to use to run your script, if path or command is not
                 specified }
     folder: { folder where your script should run }
-    schedule: { schedule to use to run your script, specified using extended
-                crontab syntax -- second-of-minute minute-of-hour
-                hour-of-day day-of-month month-of-year day-of-week }
 repository:
   uri: { uri of repository that contains your script }
   folder: { folder that contains this configuration file }
@@ -345,6 +345,7 @@ environment:
                either cpu or gpu }
   memory: { memory amount you want to reserve to run your script }
   batch: { batch concurrency, either process, thread or single }
+  interval: { interval to wait before running your scripts again }
 display:
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
