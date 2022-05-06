@@ -121,13 +121,6 @@ input:
     - path: report-section1.md
     - path: report-section2.md
 
-# tests configuration
-# - folder that contains an input subfolder with paths for
-#   input variables that define a specific test
-tests:
-  - folder: tests/test1
-  - folder: tests/test2
-
 # batches configuration
 # - name of the batch; can include variable ids and filters
 # - slug for batch URI; can include variable ids and filters
