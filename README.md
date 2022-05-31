@@ -1,8 +1,8 @@
 # CrossCompute Analytics Automation System Documentation
 
-Publish step-by-step forms that generate web-based reports.
+Webify your scripts.
 
-- [Automation Framework](docs/automation-framework): Transform your Jupyter notebook or command-line script into a step-by-step form that generates a web-based report.
+- [Automation Framework](docs/automation-framework): Webify your Jupyter notebook or command-line script into a form that generates a report.
 - [Editing Extension](docs/editing-extension): Prototype your analytics collaboratively in JupyterLab with CrossCompute extensions.
 - [Analytics Marketplace](docs/analytics-marketplace): Sell subscription access to your report, tool, widget, dashboard, form.
 

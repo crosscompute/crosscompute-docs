@@ -1,6 +1,6 @@
 # Automation Framework
 
-Transform your Jupyter notebook or command-line script into a step-by-step form that generates a web-based report. CrossCompute is designed to be decoupled, meaning that your notebook or script should know as little about CrossCompute as possible. Most of the information that CrossCompute needs to know to run and render your variables is in a configuration file.
+Webify your Jupyter notebook or command-line script into a form that generates a report. CrossCompute is designed to be decoupled, meaning that your notebook or script should know as little about CrossCompute as possible. Most of the information that CrossCompute needs to know to run and render your variables is in a configuration file.
 
 ## Quickstart
 
