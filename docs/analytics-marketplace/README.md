@@ -11,7 +11,7 @@ Sell subscription access to your report, tool, widget, dashboard, form.
 Marketing your automations requires two steps:
 
 1. Specify markets. Markets are other instances of the CrossCompute server where you want your automations to be listed. Markets can collect subscription revenue for your automations on your behalf and send you revenue share. The amount of revenue share is dictated by your payment configuration.
-2. Deploy automations. You can deploy automations on our servers or on your servers using the open source CrossCompute framework. Use the `--market` command-line option to broadcast your automations to your specified markets.
+2. Deploy automations. You can deploy automations on our servers or on your servers using the open source CrossCompute framework. Use the `--market` command-line option to announce your automations to your specified markets.
 
 Here is an example configuration with markets and payment configuration.
 
@@ -42,7 +42,7 @@ payment:
   currency: nano
 ```
 
-Broadcast automations to the specified markets using the following command. This will start the production server and tell the markets that your automations are ready to run and that you can start accepting subscription payments.
+Announce automations to the specified markets using the following command. This will start the production server and tell the markets that your automations are ready to run and that you can start accepting subscription payments. This does not share your code.
 
 ```bash
 crosscompute --market
