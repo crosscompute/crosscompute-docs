@@ -280,8 +280,6 @@ imports:
     path: { path to the configuration file that you want to import }
     uri: { uri to the configuration file that you want to import }
     name: { name of the automation that you want to import }
-peers:
-  - uri: { uri of a trusted peer }
 input:
   variables:
     - id: { id to use when referencing this variable in your template }
@@ -399,6 +397,8 @@ prints:
         path: { path to your template }
     folder: { folder to use when printing this automation }
     name: { name to use when printing this automation }
+markets:
+  - uri: { uri of a trusted market }
 payment:
   account: { account where the user should send subscription payment
              e.g. nano address }
