@@ -47,3 +47,5 @@ Announce automations to the specified markets using the following command. This 
 ```bash
 crosscompute --market
 ```
+
+A server can be a market only if it is running in `--market` mode.
