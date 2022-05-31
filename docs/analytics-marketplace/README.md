@@ -11,7 +11,7 @@ Sell subscription access to your report, tool, widget, dashboard, form.
 Marketing automations to your peers requires two steps:
 
 1. Specify peers. Peers are other instances of the CrossCompute server where you want your automations to be listed. Peers can collect subscription revenue for your automations on your behalf and send you revenue share. The amount of revenue share is dictated by your payment configuration.
-2. Deploy automations. You can deploy automations on our servers or on your servers using the open source CrossCompute framework. Use the `market` command-line option to market your automations to your specified peers.
+2. Deploy automations. You can deploy automations on our servers or on your servers using the open source CrossCompute framework. Use the `--market` command-line option to market your automations to your specified peers.
 
 Here is an example configuration with peers and payment configuration.
 
