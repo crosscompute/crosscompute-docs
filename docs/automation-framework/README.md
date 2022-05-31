@@ -1,20 +1,21 @@
 # Automation Framework
 
-Automate your Jupyter notebooks and scripts as web-based reports, tools, widgets, dashboards, forms. CrossCompute is designed to be decoupled, meaning that your notebook or script should know as little about CrossCompute as possible. All of the information that CrossCompute needs to know to run your script and render your variables is in a configuration file.
+Transform your Jupyter notebook or command-line script into a step-by-step form that generates a web-based report. CrossCompute is designed to be decoupled, meaning that your notebook or script should know as little about CrossCompute as possible. Most of the information that CrossCompute needs to know to run and render your variables is in a configuration file.
 
 ## Quickstart
 
-You can use our self-contained server to prototype automations on your local machine. Note that the package requires Python 3.9.
+You can use our self-contained server to prototype automations on your local machine. Note that the package requires at least Python 3.9.
 
 ```bash
 # Prepare environment
 sudo dnf -y install python3.9
-# sudo apt -y install python3.9
 python3.9 -m venv ~/.virtualenvs/crosscompute
 source ~/.virtualenvs/crosscompute/bin/activate
 
 # Update package
-pip install crosscompute>=0.9.2 crosscompute-views-map>=0.0.2 --upgrade
+pip install \
+    crosscompute>=0.9.2 \
+    crosscompute-views-map>=0.0.2
 
 # Initialize configuration
 crosscompute

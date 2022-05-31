@@ -5,14 +5,15 @@ nav:
   - Automation System: README.md
   - Automation Framework:
     - Quickstart: automation-framework/README.md
-    - Writing Your Script: automation-framework/script.md
-    - Configuring the Automation: automation-framework/configuration.md
+    - Script: automation-framework/script.md
+    - Configuration: automation-framework/configuration.md
     - Examples: automation-framework/examples.md
     - Views: automation-framework/views/README.md
-  - Editing Platform: editing-platform/README.md
-  - Publishing Platform: publishing-platform/README.md
+  - Editing Extension: editing-extension/README.md
   - Analytics Marketplace: analytics-marketplace/README.md
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight
   - pymdownx.superfences
 extra:

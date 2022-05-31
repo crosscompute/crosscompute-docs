@@ -30,49 +30,25 @@ Here is an example of a simple script that uses command-line arguments to define
 
 ```python
 import json
-from os.path import join
+from pathlib import Path
 from sys import argv
 
-
-# Get folder paths from command-line arguments
-input_folder, output_folder = argv[1:]
-
-
-# Load input variables from input folder
-variables = json.load(open(join(input_folder, 'variables.dictionary'), 'rt'))
-
-
-# Perform calculation
+input_folder, output_folder = [Path(_) for _ in argv[1:]]
+with (input_folder / 'variables.dictionary').open('rt') as f:
+    variables = json.load(f)
 c = variables['a'] + variables['b']
-
-
-# Save output variables to output folder
-json.dump({
-    'c': c,
-}, open(join(output_folder, 'variables.dictionary'), 'wt'))
+with (output_folder / 'variables.dictionary').open('wt') as f:
+    json.dump({'c': c}, f)
 ```
 
 **Configuration (`automate.yml`)**
 
 ```yaml
 ---
-# version of crosscompute
-crosscompute: 0.9.1
-
-# name of your automation
+crosscompute: 0.9.2
 name: Add Numbers
-
-# version of your automation
 version: 0.1.0
-
-# input configuration
 input:
-
-  # input variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
-  # - path where your script loads the variable,
-  #   relative to the input folder
   variables:
     - id: a
       view: number
@@ -80,33 +56,17 @@ input:
     - id: b
       view: number
       path: variables.dictionary
-
-# output configuration
 output:
-
-  # output variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
-  # - path where your script saves the variable,
-  #   relative to the output folder
-  variables:
     - id: c
       view: number
       path: variables.dictionary
-
-# tests configuration
-# - folder that contains an input subfolder with paths for
-#   input variables that define a specific test
-tests:
-  - folder: tests/integers
-  - folder: tests/floats
-
-# scripts configuration
-# - command to use to run your script, if path is not specified
-# - folder where your script should run
+batches:
+  - name: '{a} + {b}'
+    folder: batches/{a}-{b}
+    configuration:
+      path: datasets/batches.csv
 scripts:
   - command: python run.py {input_folder} {output_folder}
-    folder: .
 ```
 
 ### Environment Variables
@@ -124,52 +84,28 @@ Here is an example of a simple script that uses environment variables to define 
 
 ```python
 import json
-from os import environ
-from os.path import join
+from os import getenv
+from pathlib import Path
 
-
-# Get folder paths from environment variables
-input_folder = environ.get(
+input_folder = getenv(
     'CROSSCOMPUTE_INPUT_FOLDER', 'tests/integers/input')
-output_folder = environ.get(
+output_folder = getenv(
     'CROSSCOMPUTE_OUTPUT_FOLDER', 'tests/integers/output')
-
-
-# Load input variables from input folder
-variables = json.load(open(join(input_folder, 'variables.dictionary'), 'rt'))
-
-
-# Perform calculation
+with (input_folder / 'variables.dictionary').open('rt') as f:
+    variables = json.load(f)
 c = variables['a'] + variables['b']
-
-
-# Save output variables to output folder
-json.dump({
-    'c': c,
-}, open(join(output_folder, 'variables.dictionary'), 'wt'))
+with (output_folder / 'variables.dictionary').open('wt') as f:
+    json.dump({'c': c}, f)
 ```
 
 **Configuration (`automate.yml`)**
 
 ```yaml
 ---
-# version of crosscompute
-crosscompute: 0.9.1
-
-# name of your automation
+crosscompute: 0.9.2
 name: Add Numbers
-
-# version of your automation
 version: 0.1.0
-
-# input configuration
 input:
-
-  # input variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
-  # - path where your script loads the variable,
-  #   relative to the input folder
   variables:
     - id: a
       view: number
@@ -177,32 +113,16 @@ input:
     - id: b
       view: number
       path: variables.dictionary
-
-# output configuration
 output:
-
-  # output variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
-  # - path where your script saves the variable,
-  #   relative to the output folder
   variables:
     - id: c
       view: number
       path: variables.dictionary
-
-# tests configuration
-# - folder that contains an input subfolder with paths for
-#   input variables that define a specific test
-tests:
-  - folder: tests/integers
-  - folder: tests/floats
-
-# scripts configuration
-# - path to your script, relative to the script folder
-# - command to use to run your script, if path is not specified
-# - folder where your script should run
+batches:
+  - name: '{a} + {b}'
+    folder: batches/{a}-{b}
+    configuration:
+      path: datasets/batches.csv
 scripts:
   - path: run.py
-    folder: .
 ```

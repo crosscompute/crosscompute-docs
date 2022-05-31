@@ -6,37 +6,38 @@ Here are the options supported in the current release:
 
 ```yaml
 ---
-# Examples: https://github.com/crosscompute/crosscompute-examples
-# Documentation: https://d.crosscompute.com
+# Reference: https://github.com/crosscompute/crosscompute-examples
+# Gallery: https://crosscompute.net
+# Documentation: https://docs.crosscompute.com
 # Forum: https://forum.crosscompute.com
 
-# version of crosscompute
-crosscompute: 0.0.0
+# version of crosscompute (required)
+crosscompute: 0.9.2
 
 # name of your automation
 name: Automation X
 
 # slug for automation URI
-slug: automation-x
+# slug: automation-x
 
 # version of your automation
 version: 0.0.0
 
 # imports configuration
+# - path to the configuration file that you want to import (required)
 # - id to use when referencing this import in your template
-# - path to the configuration file that you want to import
 imports:
-  - id: automation-y
-    path: tools/automation-y/automate.yml
+  - path: tools/automation-y/automate.yml
+    id: automation-y
 
 # input configuration
 input:
 
   # input variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
+  # - id to use when referencing your variable in the template (required)
+  # - view to use when rendering your variable on the display (required)
   # - path where your script loads the variable, relative to the input folder;
-  #   specify ENVIRONMENT to prevent saving the variable to disk
+  #   specify ENVIRONMENT to prevent saving the variable to disk (required)
   # - configuration of the view
   variables:
     - id: x1
@@ -46,7 +47,7 @@ input:
       view: number
       path: variables.dictionary
       configuration:
-        label: xx
+        label: YOUR-LABEL-TEXT
     - id: x3
       view: password
       path: ENVIRONMENT
@@ -61,23 +62,27 @@ input:
       path: x6.md
 
   # input templates
-  # - path to your markdown template or jupyter notebook form
+  # - path to your markdown template or jupyter notebook form (required)
   templates:
-    - path: form.md
+    - path: form1.md
+    - path: form2.md
 
 # output configuration
-# output:
+output:
 
   # output variables
-  # - id to use when referencing your variable in the template
-  # - view to use when rendering your variable on the display
-  # - path where your script saves the variable,
-  #   relative to the output folder
+  # - id to use when referencing your variable in the template (required)
+  # - view to use when rendering your variable on the display (required)
+  # - path where your script saves the variable, relative to the output
+  #   folder (required)
   # - configuration of the view
   variables:
     - id: y1
       view: link
       path: y1.pdf
+      configuration:
+        link-text: YOUR-LINK-TEXT
+        file-name: YOUR-FILE-NAME
     - id: y2
       view: string
       path: variables.dictionary
@@ -116,37 +121,37 @@ input:
         path: y9-configuration.json
 
   # output templates
-  # - path to your markdown template or jupyter notebook form
+  # - path to your markdown template or jupyter notebook form (required)
   templates:
     - path: report-section1.md
     - path: report-section2.md
 
 # batches configuration
+# - folder that contains an input subfolder with paths for
+#   input variables; can include variable ids and filters (required)
 # - name of the batch; can include variable ids and filters
 # - slug for batch URI; can include variable ids and filters
-# - folder that contains an input subfolder with paths for
-#   input variables; can include variable ids and filters
 # - reference batch to use to fill omitted variables in batch configuration
 # - configuration for batch template
 batches:
 
   # case 0: use a batch folder to set values for input variables
-  - folder: batches/batch0
+  - folder: batches/standard
 
   # case 1: use a batch configuration to vary values for input variables
-  - name: '{x1 | title} {x2}'
+  - folder: batches/{x1 | slug}-{x2}
+    name: '{x1 | title} {x2}'
     slug: '{x1 | slug}-{x2}'
-    folder: batches/{x1 | slug}-{x2}
     configuration:
       path: datasets/batches.csv
 
   # case 2: use a reference folder to set default values for missing variables
   #         use a batch configuration to vary selected variables
-  - name: '{x1 | title} {x2}'
+  - folder: batches/{x1 | slug}-{x2}
+    name: '{x1 | title} {x2}'
     slug: '{x1 | slug}-{x2}'
-    folder: batches/{x1 | slug}-{x2}
     reference:
-      folder: batches/batch0
+      folder: batches/standard
     configuration:
       path: datasets/batches.csv
 
@@ -163,8 +168,8 @@ datasets:
 # - command to run your script, if path is not specified
 # - folder where your script should run
 scripts:
-  - path: run1.ipynb
-    command: python run1.py {input_folder} {output_folder} {log_folder} {debug_folder}
+  - path: run.ipynb
+    command: python run.py {input_folder} {output_folder} {log_folder} {debug_folder}
     folder: .
   - path: run2.ipynb
     command: python run2.py {input_folder} {output_folder} {log_folder} {debug_folder}
@@ -174,7 +179,7 @@ scripts:
 environment:
 
   # environment variables
-  # - id of the environment variable to make available to your script
+  # - id of the environment variable to make available to your script (required)
   variables:
     - id: GOOGLE_KEY
 
@@ -188,22 +193,22 @@ environment:
 display:
 
   # styles configuration
-  # - uri to CSS stylesheet that will be used to render your templates
   # - path to CSS stylesheet that will be used to render your templates
+  # - uri to CSS stylesheet that will be used to render your templates
   styles:
-    - uri: https://fonts.googleapis.com/css?family=Tangerine
     - path: report.css
+    - uri: https://fonts.googleapis.com/css?family=Tangerine
 
   # templates configuration
+  # - path to template (required)
   # - id of template
-  # - path to template
   templates:
     - path: base.jinja2
       id: base
     - path: live.jinja2
       id: live
-    - id: root
-      path: root.jinja2
+    - path: root.jinja2
+      id: root
 
   # pages configuration
   # - id of the page (required)
@@ -211,24 +216,50 @@ display:
   pages:
     - id: automation
       configuration:
+        design: input
         design: output
+        design: none
+    - id: input
+      configuration:
+        design: flex-vertical
     - id: output
       configuration:
         design: none
+
+# authorization configuration
+authorization:
+  tokens:
+    - path: tokens.yml
+  groups:
+    - configuration:
+        role_name: admin
+      permissions:
+        - id: add_authorization
+        - id: see_automation
+        - id: see_batch
+        - id: run_automation
+    - configuration:
+        role_name:
+          - leader
+          - member
+      permissions:
+        - id: see_automation
+        - id: see_batch
+          action: match
 
 # prints configuration
 prints:
   - format: pdf
     configuration:
       header-footer:
-          font-family: sans-serif
-          font-size: 8pt
-          color: '#808080'
-          padding: 0.1in 0.25in
-          skip-first: true
+        font-family: sans-serif
+        font-size: 8pt
+        color: '#808080'
+        padding: 0.1in 0.25in
+        skip-first: true
       page-number:
-          location: footer
-          alignment: right
+        location: footer
+        alignment: right
     folder: ~/Documents/attachments/automation-x-{timestamp}
     name: '{y2 | slug}-{y3}.pdf'
 ```
@@ -250,7 +281,7 @@ imports:
     uri: { uri to the configuration file that you want to import }
     name: { name of the automation that you want to import }
 peers:
-  - uri: { uri of a trusted peer for imports and exports }
+  - uri: { uri of a trusted peer }
 input:
   variables:
     - id: { id to use when referencing this variable in your template }
@@ -351,14 +382,13 @@ display:
       configuration:
         design: { design of the page }
 authorization:
+  tokens:
+    - path: { path to static tokens }
   groups:
-    - id: { id of authorization group }
-      expression: { expression containing variable ids }
-  permissions:
-    - id: { id of permission }
-      rules:
-        - group: { group id }
-          action: { accept, match, reject, drop }
+    - configuration: { configuration of group as defined by token variables }
+      permissions:
+        - id: { add_authorization, see_automation, see_batch, run_automation }
+          action: { accept, match }
 prints:
   - format: { format to use when printing this automation }
     configuration:
@@ -370,9 +400,9 @@ prints:
     folder: { folder to use when printing this automation }
     name: { name to use when printing this automation }
 payment:
-  account: { account where the user should send payment when using this
-             automation }
+  account: { account where the user should send subscription payment
+             e.g. nano address }
+  period: { period of subscription e.g. month }
   amount: { amount of payment that the user should send }
-  currency: { currency of payment }
-  policy: { policy to use for payment, either before or after }
+  currency: { currency of payment e.g. nano }
 ```
