@@ -345,11 +345,6 @@ datasets:
   - path: { path to your dataset }
     reference:
       path: { path to reference dataset if expected path does not exist }
-setups:
-  - folder: { folder where your setup should run }
-    dependencies:
-      - package: { package on PyPI }
-    command: { command to use to setup your script, relative to the setup folder }
 scripts:
   - path: { path to your script, relative to the script folder }
     command: { command to run your script, if path is not specified }
@@ -362,12 +357,17 @@ repository:
 environment:
   variables:
     - id: { id of the environment variable to make available to your script }
-  image: { image of the container that you want to use to run your script }
+  interval: { interval to wait before running your scripts again }
+  container:
+    image: { image of the container that you want to use to run your script }
+    packages:
+      - id: { id of the package that you want installed }
+        manager: { manager that you want to use to install the package }
+        repository: { repository of packages e.g. rpmfusion-free }
   processor: { processor type you want to use to run your script,
                either cpu or gpu }
   memory: { memory amount you want to reserve to run your script }
   batch: { batch concurrency, either process, thread or single }
-  interval: { interval to wait before running your scripts again }
 display:
   styles:
     - uri: { uri to CSS stylesheet that will style your templates }
