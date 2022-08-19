@@ -1,5 +1,35 @@
 # vim
 *.sw[op]
 *~
+# python
+*.egg*
+*.py[co]
+.cache
+.coverage
+.ipynb_checkpoints
+.pytest_cache
+.tox
+__pycache__
+build/
+dist/
+# transient
+*.log
+*.tmp
+*_data
+.DS_Store
+.~lock.*
+# sqlite
+*.sqlite
+*.sqlite-journal
+# crosscompute
+batches/
+datasets/
+debug/
+runs/
+tests/
+.*.py
+.run.*
+.containerfile
+.containerignore
 # mkdocs
 site/

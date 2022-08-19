@@ -4,11 +4,12 @@ theme: material
 nav:
   - Automation System: README.md
   - Automation Framework:
-    - Quickstart: automation-framework/README.md
-    - Script: automation-framework/script.md
-    - Configuration: automation-framework/configuration.md
-    - Examples: automation-framework/examples.md
-    - Views: automation-framework/views/README.md
+      - Quickstart: automation-framework/README.md
+      - Tutorials: automation-framework/tutorials/README.md
+      - Script: automation-framework/script.md
+      - Configuration: automation-framework/configuration.md
+      - Examples: automation-framework/examples.md
+      - Views: automation-framework/views/README.md
   - Editing Extension: editing-extension/README.md
   - Analytics Marketplace: analytics-marketplace/README.md
 markdown_extensions:
