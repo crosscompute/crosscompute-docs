@@ -4,10 +4,10 @@ By the end of this tutorial, you will have created a dashboard that estimates th
 
 ![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
-- [You can see the dashboard here](https://crosscompute.net/a/airport-traffic). It updates every hour.
+- [You can see the dashboard here](https://crosscompute.net/a/see-airport-traffic). It updates every hour.
 - [Here is the code for the dashboard](https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/airport-traffic).
 - [Here is the code for this tutorial](https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
-- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/airport-traffic).
+- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
 
 You will need the following packages and environment variables. For `GOOGLE_KEY`, you will need to enable the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix).
 
