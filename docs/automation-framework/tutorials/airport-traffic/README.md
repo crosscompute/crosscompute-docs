@@ -16,7 +16,6 @@ pip install \
     jupyterlab-crosscompute \
     crosscompute-views-map \
     h3 \
-    hashlib \
     matplotlib \
     requests \
     shapely
