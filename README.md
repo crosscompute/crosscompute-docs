@@ -10,7 +10,15 @@ To build this documentation, run the following commands:
 
 ```bash
 # Install dependencies
-pip install mkdocs mkdocs-material pygments pymdown-extensions --upgrade
+pip install --upgrade \
+    mkdocs \
+    mkdocs-material \
+    pre-commit \
+    pygments \
+    pymdown-extensions
+
+# Install pre-commit hooks
+pre-commit install
 
 # Launch development server
 mkdocs serve
