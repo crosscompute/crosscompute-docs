@@ -101,6 +101,24 @@ display:
 
 ### Define Batches
 
+In `automate.yml`, there is a section that defines the batches for your automation. Batches are pre-defined runs.
+
+```yaml
+batches:
+
+  - folder: batches/{city_name | slug}-{destination_name | slug}-{travel_mode | slug}
+
+    # Set batch name
+    name: '{city_name} - {destination_name} - {travel_mode}'
+
+    # Set batch uri
+    slug: '{city_name | slug}-{destination_name | slug}-{travel_mode | slug}'
+
+    # Configure batch variables from a file
+    configuration:
+      path: datasets/batches.csv
+```
+
 Create a folder called `datasets`. Then, create a file called `batches.csv` in the `datasets` folder. These batches run automatically.
 
 ```csv
@@ -115,13 +133,41 @@ NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Comm
 
 ### Add Styles
 
+In `automate.yml`, styles are part of the display configuration.
+
+```yaml
+display:
+
+  styles:
+
+    # Define styles using CSS
+    - path: style.css
+
+  pages:
+
+    # Set the automation page to show the output of the first batch
+    - id: automation
+      configuration:
+        design: output
+
+    # Remove default design for output page
+    - id: output
+      configuration:
+        design: none
+```
+
 Create a file called `style.css`.
 
 ```css
 .districts_map {
-    height: 50vh;
+  height: 50vh;
+}
+._image {
+  max-width: 100%;
 }
 ```
+
+You can style your views using CSS for variable names or view names. Note that view names are prefixed by an underscore.
 
 ### Add Scripts
 
