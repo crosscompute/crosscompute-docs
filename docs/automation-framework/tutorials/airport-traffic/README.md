@@ -509,15 +509,49 @@ GeometryCollection(make_grid_points(geometry, 8) + [geometry])
 Finally, we add a histogram to show the distribution of travel times.
 
 ```python
+import matplotlib.pyplot as plt
+
+ts = [_['properties']['t'] for _ in features]
+plt.hist(ts, bins=10)
+```
+
+![Raw Histogram](images/histogram-raw.png)
+
+Add some labels.
+
+```python
 travel_name = {
     'driving': 'car',
     'transit': 'public transit',
 }[travel_mode]
+plt.hist(ts, bins=10)
+plt.title(f'Time to {destination_address} by {travel_name.title()}')
+plt.xlabel(f'minutes')
 ```
 
+![Labelled Histogram](images/histogram-labelled.png)
+
+Add a color map.
+
 ```python
-ts = [_['properties']['t'] for _ in features]
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+
+REFERENCE_TIME_IN_MINUTES = 60
+
+n, bins, patches = plt.hist(ts, bins=10)
+bin_centers = 0.5 * (bins[:-1] + bins[1:])
+color_indices = bin_centers / REFERENCE_TIME_IN_MINUTES
+color_map = LinearSegmentedColormap.from_list('', ['blue', 'red'])
+for i, p in zip(color_indices, patches):
+    plt.setp(p, 'facecolor', color_map(i))
+plt.title(f'Time to {destination_address} by {travel_name.title()}')
+plt.xlabel(f'minutes')
 ```
+
+![Colorful Histogram](images/histogram-colorful.png)
+
+Adjust dimensions, remove padding and save!
 
 ```python
 import matplotlib.pyplot as plt
@@ -535,7 +569,8 @@ for i, p in zip(color_indices, patches):
     plt.setp(p, 'facecolor', color_map(i))
 plt.title(f'Time to {destination_address} by {travel_name.title()}')
 plt.xlabel(f'minutes')
+plt.tight_layout()
 plt.savefig(output_folder / 'histogram.png')
 ```
 
-![Times Histogram](images/times-histogram.png)
+![Times Histogram](images/histogram-final.png)
