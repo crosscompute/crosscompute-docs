@@ -2,7 +2,7 @@
 crosscompute: 0.9.2
 name: See Airport Traffic
 description: See how long it takes to get to the airport from different parts of a city
-version: 0.0.1
+version: 0.0.3
 
 input:
   variables:
@@ -27,7 +27,7 @@ output:
           - type: fill
             paint:
               fill-color: ['interpolate', ['linear'], ['get', 't'], 1, 'blue', 60, 'red']
-              fill-opacity: 0.8              
+              fill-opacity: 0.8
     - id: time_histogram
       view: image
       path: histogram.png

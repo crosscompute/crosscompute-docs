@@ -4,12 +4,12 @@ By the end of this tutorial, you will have created a dashboard that estimates th
 
 ![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
+- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic&environment_text=GOOGLE_KEY=YOUR-GOOGLE-KEY). You will need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) for Phase 3 of the tutorial.
 - [You can see the dashboard here](https://crosscompute.net/a/see-airport-traffic). It updates every hour.
 - [Here is the code for the dashboard](https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/airport-traffic).
 - [Here is the code for this tutorial](https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
-- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
 
-You will need the following packages and environment variables. For `GOOGLE_KEY`, you will need to enable the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix).
+If you are using your own machine, install the following packages and environment variables. For `GOOGLE_KEY`, please enable the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix).
 
 ```bash
 pip install \
@@ -83,8 +83,6 @@ scripts:
   - path: run.ipynb
 
 environment:
-  variables:
-    - id: GOOGLE_KEY
   interval: 1 hour
 
 display:
@@ -390,9 +388,91 @@ environment:
 
 ![Random Times](images/random-times.gif)
 
-## Phase 2: Compute Travel Times
+## Phase 2: Add Time Histogram
 
-We will use the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to compute travel time to the airport from each district.
+Next, we add a histogram to show the distribution of travel times.
+
+```python
+import matplotlib.pyplot as plt
+
+ts = [_['properties']['t'] for _ in features]
+plt.hist(ts, bins=10)
+```
+
+![Raw Histogram](images/histogram-raw.png)
+
+Add some labels.
+
+```python
+travel_name = {
+    'driving': 'car',
+    'transit': 'public transit',
+}[travel_mode]
+plt.hist(ts, bins=10)
+plt.title(f'Time to {destination_address} by {travel_name.title()}')
+plt.xlabel(f'minutes')
+```
+
+![Labelled Histogram](images/histogram-labelled.png)
+
+Add a color map.
+
+```python
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+
+REFERENCE_TIME_IN_MINUTES = 60
+
+n, bins, patches = plt.hist(ts, bins=10)
+bin_centers = 0.5 * (bins[:-1] + bins[1:])
+color_indices = bin_centers / REFERENCE_TIME_IN_MINUTES
+color_map = LinearSegmentedColormap.from_list('', ['blue', 'red'])
+for i, p in zip(color_indices, patches):
+    plt.setp(p, 'facecolor', color_map(i))
+plt.title(f'Time to {destination_address} by {travel_name.title()}')
+plt.xlabel(f'minutes')
+```
+
+![Colorful Histogram](images/histogram-colorful.png)
+
+Adjust dimensions, remove padding and save!
+
+```python
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+
+REFERENCE_TIME_IN_MINUTES = 60
+
+px = 1 / plt.rcParams['figure.dpi']
+plt.figure(figsize=(800 * px, 200 * px))
+n, bins, patches = plt.hist(ts, bins=10)
+bin_centers = 0.5 * (bins[:-1] + bins[1:])
+color_indices = bin_centers / REFERENCE_TIME_IN_MINUTES
+color_map = LinearSegmentedColormap.from_list('', ['blue', 'red'])
+for i, p in zip(color_indices, patches):
+    plt.setp(p, 'facecolor', color_map(i))
+plt.title(f'Time to {destination_address} by {travel_name.title()}')
+plt.xlabel(f'minutes')
+plt.tight_layout()
+plt.savefig(output_folder / 'histogram.png')
+```
+
+![Times Histogram](images/histogram-final.png)
+
+## Phase 3: Compute Travel Times
+
+Finally, we will use the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to compute travel time to the airport from each district. **You need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to complete this phase**.
+
+Add the `GOOGLE_KEY` environment variable to `automate.yml`. Remember to increase the dashboard update interval to `1 hour` to conserve your Google API request quota. You might need to restart JupyterLab if you forgot to export `GOOGLE_KEY` before starting JupyterLab.
+
+```yaml
+environment:
+  variables:
+    - id: GOOGLE_KEY
+  interval: 1 hour
+```
+
+Add the following snippets to `run.ipynb`.
 
 ```python
 from os import getenv
@@ -550,73 +630,11 @@ GeometryCollection(make_grid_points(geometry, 8) + [geometry])
 
 ![Hexagonal Points](images/hexagonal-points.png)
 
-## Phase 3: Add Time Histogram
+## Phase 4: Embed in Website
 
-Finally, we add a histogram to show the distribution of travel times.
+You can now deploy and embed this dashboard in your website. Click the embed icon and copy the code snippet. Paste the code snippet into your website.
 
-```python
-import matplotlib.pyplot as plt
+![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
-ts = [_['properties']['t'] for _ in features]
-plt.hist(ts, bins=10)
-```
-
-![Raw Histogram](images/histogram-raw.png)
-
-Add some labels.
-
-```python
-travel_name = {
-    'driving': 'car',
-    'transit': 'public transit',
-}[travel_mode]
-plt.hist(ts, bins=10)
-plt.title(f'Time to {destination_address} by {travel_name.title()}')
-plt.xlabel(f'minutes')
-```
-
-![Labelled Histogram](images/histogram-labelled.png)
-
-Add a color map.
-
-```python
-import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-
-REFERENCE_TIME_IN_MINUTES = 60
-
-n, bins, patches = plt.hist(ts, bins=10)
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-color_indices = bin_centers / REFERENCE_TIME_IN_MINUTES
-color_map = LinearSegmentedColormap.from_list('', ['blue', 'red'])
-for i, p in zip(color_indices, patches):
-    plt.setp(p, 'facecolor', color_map(i))
-plt.title(f'Time to {destination_address} by {travel_name.title()}')
-plt.xlabel(f'minutes')
-```
-
-![Colorful Histogram](images/histogram-colorful.png)
-
-Adjust dimensions, remove padding and save!
-
-```python
-import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-
-REFERENCE_TIME_IN_MINUTES = 60
-
-px = 1 / plt.rcParams['figure.dpi']
-plt.figure(figsize=(800 * px, 200 * px))
-n, bins, patches = plt.hist(ts, bins=10)
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-color_indices = bin_centers / REFERENCE_TIME_IN_MINUTES
-color_map = LinearSegmentedColormap.from_list('', ['blue', 'red'])
-for i, p in zip(color_indices, patches):
-    plt.setp(p, 'facecolor', color_map(i))
-plt.title(f'Time to {destination_address} by {travel_name.title()}')
-plt.xlabel(f'minutes')
-plt.tight_layout()
-plt.savefig(output_folder / 'histogram.png')
-```
-
-![Times Histogram](images/histogram-final.png)
+- [See more tutorials](..)
+- [Learn about the framework](../..)

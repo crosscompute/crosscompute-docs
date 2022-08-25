@@ -43,8 +43,6 @@ scripts:
   - path: run.ipynb
 
 environment:
-  variables:
-    - id: GOOGLE_KEY
   interval: 10 seconds
 
 display:
