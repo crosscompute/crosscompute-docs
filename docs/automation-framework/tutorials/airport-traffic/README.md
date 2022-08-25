@@ -636,5 +636,5 @@ You can now deploy and embed this dashboard in your website. Click the embed ico
 
 ![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
-- [See more tutorials](..)
-- [Learn about the framework](../..)
+- [See more tutorials](../README.md)
+- [Learn about the framework](../../README.md)
