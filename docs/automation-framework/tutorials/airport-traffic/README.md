@@ -5,7 +5,7 @@ By the end of this tutorial, you will have created a dashboard that estimates th
 ![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
 - [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic&environment_text=GOOGLE_KEY=YOUR-GOOGLE-KEY). You will need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) for Phase 3 of the tutorial.
-- [You can see the dashboard here](https://crosscompute.net/a/see-airport-traffic). It updates every hour.
+- [You can see the dashboard here](https://crosscompute.net/a/see-airport-traffic).
 - [Here is the code for the dashboard](https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/airport-traffic).
 - [Here is the code for this tutorial](https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
 
@@ -83,7 +83,7 @@ scripts:
   - path: run.ipynb
 
 environment:
-  interval: 1 hour
+  interval: 8 hours
 
 display:
   styles:
@@ -463,13 +463,13 @@ plt.savefig(output_folder / 'histogram.png')
 
 Finally, we will use the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to compute travel time to the airport from each district. **You need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to complete this phase**.
 
-Add the `GOOGLE_KEY` environment variable to `automate.yml`. Remember to increase the dashboard update interval to `1 hour` to conserve your Google API request quota. You might need to restart JupyterLab if you forgot to export `GOOGLE_KEY` before starting JupyterLab.
+Add the `GOOGLE_KEY` environment variable to `automate.yml`. Remember to increase the dashboard update interval to `8 hours` to conserve your Google API request quota. You might need to restart JupyterLab if you forgot to export `GOOGLE_KEY` before starting JupyterLab.
 
 ```yaml
 environment:
   variables:
     - id: GOOGLE_KEY
-  interval: 1 hour
+  interval: 8 hours
 ```
 
 Add the following snippets to `run.ipynb`.
