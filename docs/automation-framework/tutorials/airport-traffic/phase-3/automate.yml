@@ -45,7 +45,7 @@ scripts:
 environment:
   variables:
     - id: GOOGLE_KEY
-  interval: 1 hour
+  interval: 9 hours
 
 display:
   styles:
