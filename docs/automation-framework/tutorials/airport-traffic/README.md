@@ -83,7 +83,7 @@ scripts:
   - path: run.ipynb
 
 environment:
-  interval: 8 hours
+  interval: 9 hours
 
 display:
   styles:
@@ -463,13 +463,13 @@ plt.savefig(output_folder / 'histogram.png')
 
 Finally, we will use the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to compute travel time to the airport from each district. **You need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) to complete this phase**.
 
-Add the `GOOGLE_KEY` environment variable to `automate.yml`. Remember to increase the dashboard update interval to `8 hours` to conserve your Google API request quota. You might need to restart JupyterLab if you forgot to export `GOOGLE_KEY` before starting JupyterLab.
+Add the `GOOGLE_KEY` environment variable to `automate.yml`. Remember to increase the dashboard update interval to `9 hours` to conserve your Google API request quota. You might need to restart JupyterLab if you forgot to export `GOOGLE_KEY` before starting JupyterLab.
 
 ```yaml
 environment:
   variables:
     - id: GOOGLE_KEY
-  interval: 8 hours
+  interval: 9 hours
 ```
 
 Add the following snippets to `run.ipynb`.
