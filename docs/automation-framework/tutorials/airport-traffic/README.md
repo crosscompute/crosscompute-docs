@@ -122,11 +122,6 @@ Create a folder called `datasets`. Then, create a file called `batches.csv` in t
 ```csv
 city_name,districts_uri,destination_name,destination_address,travel_mode
 NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",JFK,"JFK Airport",transit
-NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",JFK,"JFK Airport",driving
-NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",LGA,"LGA Airport",transit
-NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",LGA,"LGA Airport",driving
-NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",EWR,"EWR Airport",transit
-NYC,"https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Community_Districts/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson",EWR,"EWR Airport",driving
 ```
 
 ### Add Styles
@@ -492,6 +487,7 @@ travel_mode = d['travel_mode']
 
 ```python
 import requests
+import sys
 
 def get_travel_packs(origin_strings, destination_strings):
     endpoint_uri = 'https://maps.googleapis.com/maps/api/distancematrix/json'
@@ -501,7 +497,7 @@ def get_travel_packs(origin_strings, destination_strings):
     response = requests.get(uri)
     d = response.json()
     if d['status'] != 'OK':
-        print(d)
+        print(d, file=sys.stderr)
     origin_addresses = d['origin_addresses']
     travel_packs = []
     for origin_address, row in zip(origin_addresses, d['rows']):
@@ -559,8 +555,8 @@ for some_origin_packs in split(zip(
     origin_indices,
 ), GOOGLE_DISTANCE_MATRIX_MAXIMUM_COUNT):
     some_origin_points, some_origin_indices = zip(*some_origin_packs)
-    origin_strings = [get_coordinate_string(_) for _ in some_origin_points]
-    travel_packs = get_travel_packs(origin_strings, destination_strings)
+    some_origin_strings = [get_coordinate_string(_) for _ in some_origin_points]
+    travel_packs = get_travel_packs(some_origin_strings, destination_strings)
     for index, (origin_address, time_in_seconds) in zip(some_origin_indices, travel_packs):
         time_packs.append((origin_address, time_in_seconds))
         feature = features[index]
