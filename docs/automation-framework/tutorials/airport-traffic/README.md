@@ -26,7 +26,7 @@ jupyter lab
 
 ## Phase 0: Plan Dashboard Variables
 
-The first step is to decide what variables you want to show in your dashboard.
+The first step is to decide what variables you want to show in your dashboard. Choose your output variables carefully -- decide what data is appropriate to share with the outside world.
 
 1. Configure automation
 2. Define batches
@@ -307,6 +307,16 @@ for feature in features:
 ```
 
 ```python
+from shapely.geometry import mapping, shape
+
+def simplify_feature(feature, tolerance):
+    raw_geometry = shape(feature['geometry'])
+    simplified_geometry = raw_geometry.simplify(tolerance)
+    feature['geometry'] = mapping(simplified_geometry)
+    return feature
+```
+
+```python
 import json
 from urllib.request import urlretrieve as download_uri
 
@@ -399,10 +409,20 @@ plt.hist(ts, bins=10)
 Add some labels.
 
 ```python
+import json
+
+with (input_folder / 'variables.dictionary').open('rt') as f:
+    d = json.load(f)
+districts_uri = d['districts_uri']
+destination_address = d['destination_address']
+travel_mode = d['travel_mode']
 travel_name = {
     'driving': 'car',
     'transit': 'public transit',
 }[travel_mode]
+```
+
+```python
 plt.hist(ts, bins=10)
 plt.title(f'Time to {destination_address} by {travel_name.title()}')
 plt.xlabel(f'minutes')

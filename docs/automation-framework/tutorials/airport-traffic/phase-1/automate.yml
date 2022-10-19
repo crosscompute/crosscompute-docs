@@ -16,6 +16,12 @@ input:
       view: string
       path: variables.dictionary
 
+# Exercise 2
+# Change the color map from blue/red to green/yellow.
+
+# Exercise 4
+# Change the color map to vary from 0 to 100.
+
 output:
   variables:
     - id: districts_map
