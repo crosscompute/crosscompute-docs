@@ -4,7 +4,7 @@ By the end of this tutorial, you will have created a dashboard that estimates th
 
 ![Airport Traffic Dashboard](images/airport-traffic-jfk.png)
 
-- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic&environment_text=GOOGLE_KEY=YOUR-GOOGLE-KEY). You will need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) for Phase 3 of the tutorial.
+- [Work through this tutorial online](https://crosscompute.net/a/learn-examples-in-jupyterlab?repository_uri=https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic&session_duration_in_minutes=10&environment_text=GOOGLE_KEY=YOUR-GOOGLE-KEY). You will need a valid `GOOGLE_KEY` enabled with the [Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix) for Phase 3 of the tutorial.
 - [You can see the dashboard here](https://crosscompute.net/a/see-airport-traffic).
 - [Here is the code for the dashboard](https://github.com/crosscompute/crosscompute-examples/tree/master/dashboards/airport-traffic).
 - [Here is the code for this tutorial](https://github.com/crosscompute/crosscompute-docs/tree/master/docs/automation-framework/tutorials/airport-traffic).
